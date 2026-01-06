@@ -1,0 +1,55 @@
+ 
+Other Fuel Specifications: There are many other properties specified for fuels (flash point, density, viscosity, etc. – some of which are discussed in Section 
+3.6 on volatility/physical properties). For completeness: gasoline’s density is typically 0.72–0.77 g/mL; diesel’s is 0.82–0.85 g/mL. Gasoline’s flash point 
+(the lowest temperature at which vapors ignite) is about -40°C (meaning even a very cold gasoline can form ignitable vapors), whereas diesel’s flash point is 
+>60°C (diesel is safer to handle, it won’t ignite at room temp). These differences are by design – safety vs volatility trade-offs. Modern fuels also have limits 
+on distillation curve points (like T₁₀, T₅₀, T₉₀ – the temperatures at which 10%, 50%, 90% of fuel has evaporated). For gasoline, T₁₀ might be around 50°C 
+(for quick vaporization), Teteness: gasoline’s density is typically 0.72–0.77 g/mL; diesel’s is 0.82–0.85 g/mL. Gasoline’s flash point (the lowest temperature 
+at which vapors ignite) is about -40°C (meaning even a very cold gasoline can form ignitable vapors), whereas diesel’s flash point is >60°C (diesel is safer to 
+handle, it won’t ignite at room temp). These differences are by design – safety vs volatility trade-offs. Modern fuels also have limits on distillation curve 
+points (like T₁₀, T₅₀, T₉₀ – the temperatures at which 10%, 50%, 90% of fuel has evaporated). For gasoline, T₁₀ might be around 50°C (for quick 
+vaporization)For gasoline, T₁₀ is typically ~40–70 °C (you need light ends for cold start), T₅₀ falls around 90–120 °C (driveability/warm‑up), and T₉₀ is 
+usually ≤150–180 °C so heavy tails don’t linger as liquid and spike UHC or deposits. Diesel’s distillation span is much higher (roughly 180–360 °C for T₉₀), 
+because it’s injected hot and doesn’t rely on pre‑vaporization in the intake; however, if the back end is too heavy you get injector coking and high PM. 
+Beyond the curve itself, a few other “must-hit” specs matter: 
+●​
+Vapor pressure (RVP): Gasoline’s RVP is tightly seasonal—higher in winter (~11–15 psi) for easy starting, lower in summer (~7–9 psi) to curb 
+evaporative VOC emissions. Diesel is formulated to be essentially nonvolatile (very low RVP) for safety and to avoid vapor lock in high-pressure 
+common-rail systems.​
+ 
+●​
+Viscosity: Diesel injectors need a sweet spot (≈2.0–4.5 cSt at 40 °C per EN 590/ASTM D975). Too thin → poor pump lubrication; too thick → bad 
+atomization. Gasoline is much less viscous (~0.5–0.8 cSt) and that’s fine for port/GDI hardware.​
+ 
+●​
+Cold‑flow properties (diesel): Cloud point, pour point, and Cold Filter Plugging Point (CFPP) define low‑temp operability. Paraffinic stocks wax up; 
+biodiesel (FAME) can worsen cold flow. Winter diesel uses additives or lighter cuts. Any new diesel-like molecule I propose has to either have acceptable 
+low-temp behavior or blendability with winterizing components.​
+ 
+●​
+Flash point & fire point: I noted gasoline’s flash point (~–40 °C) vs diesel’s (>60 °C). Kerosene/jet fuels sit in between (~38–60 °C) for handling 
+safety aboard aircraft. Novel fuels must not create unexpected safety hazards (e.g., an ether with a 0 °C flash point going into the diesel pool is a 
+non-starter unless labeled and handled separately).​
+ 
+●​
+Lubricity (diesel): Ultra-low sulfur hydrotreating stripped natural lubricity, so specs now include an HFRR wear scar limit (≈≤460 µm). If a 
+synthetic diesel molecule is very “dry,” it’ll need lubricity improvers.​
+ 
+●​
+Oxidation/gum stability: Gasoline is tested (ASTM D525) to ensure it doesn’t form gums/solids in storage or injectors. Highly unsaturated or 
+allylic structures oxidize fast. Diesel has similar oxidation stability tests (ASTM D2274) and requirements for acid number, peroxide formation, etc. I 
+therefore penalize candidates with obvious autoxidation liabilities unless they’re blendstocks with antioxidants.​
+ 
+●​
+Copper strip corrosion / sulfur & metals: Both fuels are constrained to be non-corrosive (ASTM D130). Sulfur is capped at ~10–15 ppm now. I 
+outright exclude S- or metal-containing molecules in Ignition Protocol to avoid SOx and catalyst poisoning.​
+ 
+●​
+Electrical conductivity: Low-conductivity hydrocarbon fuels can build static charge during pumping; antistatic additives are sometimes required. 
+While not a molecule-level design objective, it’s a downstream spec I need to be aware of.​
+ 
+●​
+Density & energy per liter: I already cited typical densities (gasoline 0.72–0.77 g/mL; diesel 0.82–0.85 g/mL). Density is used with LHV to 
+compute MJ/L—critical for range. If my AI proposes a very light, low-density oxygenate, its volumetric LHV may be too low for practical tanks.​
+ 
+11 

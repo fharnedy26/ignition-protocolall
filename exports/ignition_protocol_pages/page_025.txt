@@ -1,0 +1,45 @@
+ 
+Methodology 
+This project integrates computational fuel design with a formally specified experimental validation framework to explore and assess novel synthetic fuel 
+candidates. The methodology is structured into four primary phases: dataset preparation and molecular evolution, fitness evaluation, combustion 
+fingerprint analysis, and environmental stability assessment. The computational phases were implemented using open-source cheminformatics tools, 
+while the experimental components are defined as proposed protocols for future laboratory execution, together forming an end-to-end evaluation 
+pipeline. 
+ 
+1. Dataset Preparation and Fragment Cleaning 
+The starting point for molecular generation was the GDB‑17 database, a systematically enumerated collection of 166 billion small organic molecules 
+(Ruddigkeit et al., 2012). A random subset of 50 million SMILES strings was selected to serve as a molecular fragment base. 
+The following filtering criteria were applied using RDKit in Python: 
+Molecules must contain at least one carbon atom​
+A minimum of four heavy atoms (non-hydrogen) was required​
+Molecules must be sanitised successfully by RDKit (no valence errors or undefined stereochemistry)​
+Halogen-only fragments and metal-containing species were excluded 
+The cleaned fragments were saved as a flat-text SMILES file (cleaned_fragments.txt), containing approximately 12 million chemically viable fragments 
+suitable for synthetic assembly. 
+2. Evolutionary Generator and Molecular Construction 
+A fragment-based genetic algorithm was implemented to evolve candidate fuel molecules. The algorithm functioned as follows: 
+1.​
+Initialisation: Random fragment pairs were selected and merged using a dummy bond placeholder. The merged structure was checked for 
+chemical validity and converted to a SMILES string.​
+ 
+2.​
+Crossover and Mutation: Random substitution of fragments and mutation of bonds was introduced per generation. Invalid molecules were 
+discarded.​
+ 
+3.​
+Fitness Evaluation: Each generated molecule was scored against a multi-objective fitness function (detailed below).​
+ 
+4.​
+Selection: The top-performing 10% of candidates were carried forward to the next generation using roulette and elitist selection.​
+ 
+5.​
+Diversity Preservation: Structural similarity was assessed using Morgan fingerprints and Tanimoto distance. Molecules with a similarity score 
+>0.85 to others in the same generation were penalised to prevent convergence. 
+The algorithm was tested on runs of 20 to 1000 generations, with output logged every 25 generations. All results were exported in .csv format, containing 
+SMILES strings and associated property scores. 
+3. . Combustion Testing and Fingerprint Collection 
+To empirically validate candidate performance, physical flame tests are planned for top-performing prototype blends. The methodology will include: 
+Combustion setup: A Bunsen or flat-flame burner will be used to burn ~1 mL samples of each fuel under identical airflow conditions 
+.Flame imaging: High-frame-rate RGB video and long-exposure photography will be used to capture flame shape, colour and flicker. 
+Spectral analysis: A handheld spectrometer (or smartphone with diffraction grating if necessary) will be used to collect flame spectra between 400–700 nm. 
+24 

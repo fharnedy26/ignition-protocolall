@@ -1,0 +1,42 @@
+ 
+Each fuel’s combustion “fingerprint” will be extracted using: 
+Colour histograms (from video frames)​
+FFT of flame flicker frequency (temporal intensity variation)​
+Peak detection in spectral lines (noting CH, C₂ and CN emissions) 
+Principal component analysis (PCA) will be applied to visualise cluster separation between combustion fingerprints and to identify distinguishing spectral or 
+temporal patterns. 
+4. Microbial Biodegradability and Storage Stability Tests 
+To assess environmental compatibility, biodegradability and microbial growth assays are planned for selected fuel candidates: 
+●​
+Setup: ~10 mL of each prototype blend will be mixed into a sterilised soil slurry (soil + water in a 1:2 ratio). 
+●​
+Incubation: Samples will be stored at room temperature for 7–10 days and observed daily. 
+●​
+Observations to be recorded: 
+○​
+Biofilm formation or surface growth 
+○​
+Odour changes indicating microbial metabolism 
+○​
+pH shifts using litmus and indicator strips 
+○​
+Visual signs of separation, emulsification or spoilage 
+Comparison was made between synthetic fuels, known biodiesels, and fossil diesel to gauge relative stability and degradation. 
+5.  Software and Tools Used 
+●​
+RDKit – for SMILES processing and property evaluation 
+●​
+Python 3.10 – for algorithm development and data processing 
+●​
+Jupyter Notebooks – used for prototyping and testing functions 
+●​
+GitHub – version control and data tracking 
+●​
+OpenCV / matplotlib – for image and fingerprint analysis 
+●​
+Pandas – for logging, sorting and exporting candidate data 
+ 
+Results and Preliminary Outputs 
+6.1. Starting Molecule Pool and Fragment Diversity 
+ 
+25 

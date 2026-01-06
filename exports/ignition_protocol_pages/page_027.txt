@@ -1,0 +1,18 @@
+ 
+The evolutionary engine was initialised with a set of ten simple, oxygenated base molecules, as shown above. These included short-chain alcohols, ethers, 
+esters and alkenyl alcohols, chosen for their fuel relevance and structural simplicity. These fragments serve as the building blocks for larger, more complex 
+molecules in the generator. The selection aimed to capture a range of functional groups known to influence combustion, volatility and biodegradability. 
+Their presence promotes diversity in the resulting molecular structures and supports chemically reasonable crossover and mutation operations in the 
+generator. 
+6.2. Evolved Molecules After 20 Generations 
+ 
+Following twenty generations of crossover, mutation and fitness-based selection, the population exhibits clear growth in structural complexity (Figure 6-2). 
+Saturated and unsaturated hydrocarbon chains have combined with the original oxygenated motifs to yield esters, ethers and alkenyl esters with one or 
+two rings. Median molecular weight has risen to 128 g mol⁻¹, while the mean oxygen-to-carbon ratio has climbed from 0.10 to 0.12. Importantly, the ring 
+count distribution remains centred on one, demonstrating that the ring-penalty component of the fitness function is preventing runaway aromaticity. Many 
+of these generation-20 molecules already fall within the desired window for spark-ignition fuels: logP 2 – 4, molecular weight 110 – 150 g mol⁻¹ and zero 
+halogens. Taken together, these observations show that the early evolutionary pressure successfully moves the population toward fuel-relevant regions of 
+chemical space without sacrificing chemical validity. 
+6.3. Fitness Progression Across Generations 
+ 
+26 

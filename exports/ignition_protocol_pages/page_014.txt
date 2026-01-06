@@ -1,0 +1,36 @@
+ 
+Benchmark Profiles and Setup 
+To systematically benchmark the engine, we defined six workload profiles that simulate different use-case scenarios and stress levels. They range from an 
+ultra-fast sanity check to a brute-force stress test: 
+Ultra-snappy: A minimal run for instant feedback or smoke-testing the engine. This profile uses extremely conservative settings (e.g., a single seed, one 
+generation of mutations, very limited branching). It’s intended to execute in mere seconds, producing a handful of candidates. 
+Demo: A slightly larger run suitable for demonstration purposes (for instance, in a live demo during a presentation). It runs a couple of mutation 
+generations on one seed (or a few seeds) with modest branching, aiming to finish within tens of seconds and generate on the order of 10^2 candidates. 
+Classroom: A moderate profile meant to be run in an interactive session or lab setting, such as a classroom exercise. It balances complexity and speed – 
+using a few seeds and multiple generations – such that it completes in a few minutes at most, exploring perhaps 10^3–10^4 candidates. This lets students 
+see results during a class period while slightly stressing the engine. 
+Light Stress: A heavier load pushing the engine beyond casual use into deliberate stress-testing. More seeds, deeper or more numerous mutation iterations, 
+and higher branching are allowed. This profile might generate tens of thousands of candidates and run for several minutes, serving as an initial scalability 
+test. 
+Heavy Stress: A very large run approaching the upper limits of what we expect the engine to handle reasonably on a desktop. It further increases seeds and 
+mutation depth/breadth, potentially yielding hundreds of thousands of candidates. Runtimes are in the tens of minutes here, revealing more pronounced 
+performance bottlenecks. 
+Brutal: An extreme stress test with all parameters maxed out (within practical bounds) – for example, numerous seed structures, maximum allowed 
+generations, and minimal pruning beyond the standard filters. This profile is designed to break the engine or expose its limits. It can generate on the order 
+of a million candidates and was allowed to run on the scale of an hour or more if needed. The Brutal profile represents a scenario at the edge of feasibility, 
+used to probe how the engine scales at the very high end. 
+To measure performance under each profile, we executed the engine on two different systems and recorded the wall-clock execution times and candidate 
+counts: 
+System A (Optiplex 5060): Intel Core i7-8700 CPU (6 cores / 12 threads, 3.2 GHz base clock), 16 GB RAM. This is a mid-range desktop from a few years 
+ago. No discrete GPU acceleration was used on this system; the engine ran on CPU only. 
+System B (Personal PC): Intel Core i5 12th-gen CPU (a newer generation 6-core/12-thread processor with additional efficiency cores) paired with an NVIDIA 
+GeForce RTX 3060 Ti GPU (4864 CUDA cores, 8 GB VRAM), and 32 GB RAM. The GPU was not explicitly utilized by the current engine (which is 
+CPU-bound and not GPU-accelerated for these tests), but this system’s newer CPU and overall faster hardware provided a point of comparison to System 
+A. We include the GPU in the specs because it suggests future potential for acceleration, though for now the runs on System B effectively used just the 
+CPU. 
+Both systems ran identical code and configuration for each profile. We used high-resolution timers to measure the total runtime of each engine run from 
+start to finish on each system. The candidate molecule counts were either calculated based on the parameters or counted during execution to verify how 
+many unique structures were generated and evaluated. Below, we detail each profile’s configuration, the scale of the search (estimated and actual number 
+of candidates processed), and the observed execution times on the two test systems. We also provide the top 8 scoring molecules from each run (as 
+representative outputs, though again not the primary focus) in tables for reference. 
+13 

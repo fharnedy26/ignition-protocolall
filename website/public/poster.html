@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignition Protocol - Poster</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .poster {
+            width: 24in;
+            height: 36in;
+            background: linear-gradient(180deg, #1a0000 0%, #0a0a0a 50%, #0a0a0a 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 3in;
+        }
+        
+        /* Flame background effects */
+        .flame-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 69, 0, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 60%);
+            animation: flicker 4s ease-in-out infinite;
+        }
+        
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+        
+        /* Top section - Title */
+        .top-section {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .main-title {
+            font-size: 180px;
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 0.3in;
+            background: linear-gradient(180deg, #ffd700 0%, #ff6b35 50%, #ff4500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: -5px;
+            text-shadow: 0 0 40px rgba(255, 107, 53, 0.3);
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+        
+        .subtitle {
+            font-size: 48px;
+            color: #f5f5f5;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 0.5in;
+        }
+        
+        .tagline {
+            font-size: 32px;
+            color: #d4d4d4;
+            font-weight: 200;
+            max-width: 18in;
+            line-height: 1.4;
+        }
+        
+        /* Center section - Visual element */
+        .center-section {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .molecular-visual {
+            width: 12in;
+            height: 12in;
+            position: relative;
+        }
+        
+        .molecule-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.8) 0%, rgba(255, 69, 0, 0.4) 50%, transparent 100%);
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.6);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .molecule-circle:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 20%;
+            left: 30%;
+            animation-delay: 0s;
+        }
+        
+        .molecule-circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 60%;
+            animation-delay: 0.5s;
+        }
+        
+        .molecule-circle:nth-child(3) {
+            width: 180px;
+            height: 180px;
+            top: 70%;
+            left: 20%;
+            animation-delay: 1s;
+        }
+        
+        .molecule-circle:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            top: 30%;
+            left: 70%;
+            animation-delay: 1.5s;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        
+        /* Bottom section - Info */
+        .bottom-section {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 1in;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 72px;
+            font-weight: 700;
+            background: linear-gradient(180deg, #ffd700 0%, #ff6b35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.1in;
+        }
+        
+        .stat-label {
+            font-size: 20px;
+            color: #d4d4d4;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .exhibition-info {
+            text-align: right;
+        }
+        
+        .exhibition-title {
+            font-size: 28px;
+            color: #ff6b35;
+            font-weight: 600;
+            margin-bottom: 0.1in;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .exhibition-year {
+            font-size: 36px;
+            color: #f5f5f5;
+            font-weight: 300;
+        }
+        
+        .author {
+            font-size: 24px;
+            color: #d4d4d4;
+            font-weight: 300;
+            margin-top: 0.2in;
+        }
+        
+        /* QR Code placeholder */
+        .qr-placeholder {
+            width: 1.5in;
+            height: 1.5in;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff6b35;
+            font-size: 12px;
+            text-align: center;
+            padding: 0.2in;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="flame-bg"></div>
+        
+        <div class="top-section">
+            <h1 class="main-title">IGNITION<br>PROTOCOL</h1>
+            <p class="subtitle">An Evolutionary Engine for Molecular Combustion</p>
+            <p class="tagline">A computational framework for discovering and optimizing synthetic fuel candidates through AI-powered molecular generation</p>
+        </div>
+        
+        <div class="center-section">
+            <div class="molecular-visual">
+                <div class="molecule-circle"></div>
+                <div class="molecule-circle"></div>
+                <div class="molecule-circle"></div>
+                <div class="molecule-circle"></div>
+            </div>
+        </div>
+        
+        <div class="bottom-section">
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value">0.1-0.3s</div>
+                    <div class="stat-label">Speed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">2.7M+</div>
+                    <div class="stat-label">Fragments</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Valid</div>
+                </div>
+            </div>
+            
+            <div class="exhibition-info">
+                <div class="exhibition-title">Stripe Young Scientist</div>
+                <div class="exhibition-title">& Technology Exhibition</div>
+                <div class="exhibition-year">2026</div>
+                <div class="author">by Finn Harnedy</div>
+                <div class="qr-placeholder" style="margin-top: 0.3in;">
+                    QR CODE<br>→ Website
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

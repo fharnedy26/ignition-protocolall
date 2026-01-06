@@ -1,0 +1,49 @@
+ 
+3.2 Combustion Science Fundamentals: Stoichiometry, Ignition, and Flame Speed 
+To design and evaluate fuels, you must understand basic combustion science. Here I outline key concepts such as the stoichiometric mixture, ignition 
+behavior, and flame propagation – all of which influence engine performance and emissions. Stoichiometric Air-Fuel Ratio: Every fuel has a stoichiometric 
+air-fuel ratio (AFR), which is the precise mass ratio of air to fuel needed for complete combustion (with no leftover oxygen or fuel). This ratio depends on 
+the fuel’s elemental makeup (carbon, hydrogen, oxygen content). For example, gasoline (approximated as C_7H_16) has a stoichiometric AFR of about 
+14.7:1 (meaning ~14.7 kg of air per 1 kg of fuel). Diesel fuel, with a similar C/H ratio, is around 14.5:1. Oxygenated fuels have a lower stoichiometric AFR 
+because the fuel itself contributes oxygen. Ethanol (C_2H_5OH), for instance, has a stoichiometric AFR near 9:1, much lower than gasoline. This is 
+important because it affects how the fuel burns in engines. In a spark-ignition engine, the mixture is often controlled at or near stoichiometric for best 
+performance and to allow catalytic converters to function (they need a roughly stoichiometric exhaust). If the mixture is rich (too little air), combustion 
+leaves fuel unoxidized, causing carbon monoxide (CO) and unburned hydrocarbon emissions. If the mixture is lean (excess air), combustion can be more 
+complete (less CO/UHC), but very lean mixtures can misfire or, in some cases, lead to high nitrogen oxides due to high combustion temperatures. The 
+presence of oxygen in the fuel can help ensure more complete combustion in situations like cold starts, where engines deliberately run rich. Historically, 
+additives like MTBE and ethanol were added to gasoline in the 1990s to oxygenate fuel and reduce CO emissions in cities. In my project, I consider 
+molecules with built-in oxygen (like alcohol functional groups) beneficial from an emissions standpoint: oxygenated fuels “carry their own oxygen”, 
+potentially reducing incomplete combustion by enabling leaner combustion or by oxidizing soot precursors internally. However, as noted, oxygenated fuels 
+also tend to have lower energy content (because the oxygenated part of the molecule does not release energy), so there is a trade-off addressed later in 
+Section 3.6. Ignition Delay and Auto-Ignition: Ignition behavior is crucial for engine compatibility. In spark-ignition (SI) engines (gasoline), we actually want 
+to avoid auto-ignition of the fuel-air mixture until the spark plug fires – this property is quantified by octane number (discussed later). In 
+compression-ignition (CI) engines (diesel), we rely on auto-ignition of fuel injected into hot air – quantified by cetane number. The time between fuel 
+injection and the start of combustion in a diesel is called ignition delay. A short ignition delay (high cetane fuel) results in a smoother, controlled burn; a 
+long delay (low cetane) leads to a larger amount of premixed fuel igniting at once, causing a violent pressure spike known as “diesel knock” and high NOx 
+formation. From a fundamentals perspective, auto-ignition chemistry is governed by the fuel’s molecular structure and the conditions (temperature, 
+pressure). Straight-chain alkanes ignite easily (why hexadecane was defined as cetane = 100), whereas highly branched or aromatic molecules resist 
+ignition. I leverage these principles: for instance, if I design a fuel for a diesel application, I would seek molecular features that promote quick ignition (linear 
+alkyl chains, perhaps with nitrate functional groups as in some cetane improvers). For spark-ignition fuels, I want the opposite: molecules that are resistant 
+to ignition (branched chains, aromatics, certain ethers) to prevent premature knock. The detailed kinetics of auto-ignition are complex, involving 
+low-temperature oxidation pathways and radical chain reactions, but a basic understanding is captured by octane/cetane ratings used in engine tests. 
+Laminar Flame Speed: Once ignition occurs (either by spark or auto-ignition), the flame propagates through the fuel-air mixture. The laminar flame speed 
+is the speed at which an unstretched flame front travels through a quiescent premixed gas. It is a fundamental property of the fuel-air mixture. Typical 
+laminar flame speeds for stoichiometric gasoline-air are on the order of 30–40 cm/s. Hydrogen has an exceptionally high flame speed (~200 cm/s), while 
+heavier hydrocarbons and especially fuels with high aromatic content burn slower. In an engine, faster flame speed (up to a point) is beneficial because it 
+means the combustion can complete closer to the optimal timing (around top-dead-center of the piston). If a fuel’s flame speed is too slow, combustion 
+may continue late into the expansion stroke, causing a loss of efficiency and more unburnt fuel emissions. Very slow combustion can also force designers to 
+run engines at less aggressive conditions (to avoid misfire or knock onset due to partial burns). If flame speed is extremely high (approaching a detonation), 
+that’s essentially knock – which we avoid in SI engines. In my literature review, I found that flame speed correlates with molecular structure: fuels with 
+simpler, reactive structures (like small olefins or highly branched alkanes) tend to burn faster than large aromatics. Thus, if designing fuels for lean or 
+high-EGR (exhaust gas recirculation) combustion strategies, one might favor components with higher flame speeds to sustain stable combustion in dilute 
+mixtures. Modern researchers often calculate or measure laminar flame speeds for novel fuel candidates to ensure they will combust rapidly enough in an 
+engine. Combustion Temperature and Flame Chemistry: Another fundamental aspect is flame temperature, which is mainly a function of the fuel’s heat 
+release and mixture stoichiometry. Stoichiometric combustion of most hydrocarbon fuels yields flame temperatures around 2000–2300 K. Higher flame 
+temperatures promote the formation of thermal NOx (discussed in Section 3.3). Fuels containing certain functional groups (like alcohols) can have slightly 
+different adiabatic flame temperatures due to their oxygen content and lower heating value – often resulting in a cooler flame at stoichiometric conditions. 
+Additionally, flame chemistry determines the production of intermediate radicals and soot precursors. Fuels that decompose into small fragments (like 
+short-chain alkanes) tend to produce fewer sooting precursors than fuels that readily form ring structures (aromatics). These chemical tendencies will be 
+explored more under emissions (Section 3.3). In summary, the basics of combustion science – the proportion of air needed, the ease of ignition, the speed 
+of flame propagation, and the resultant temperatures – are all crucial for evaluating a potential fuel. As I design new molecules, I must consider how these 
+properties will play out: e.g., will the molecule likely ignite too soon or not soon enough? Will it burn fast and clean, or slow and smokily? By grounding my 
+5 

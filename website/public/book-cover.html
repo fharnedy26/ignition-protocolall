@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignition Protocol - Book Cover</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            background: transparent;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .book-cover {
+            width: 8.27in;
+            height: 11.69in;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a0000 50%, #0a0a0a 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Print styles */
+        @media print {
+            html, body {
+                width: 8.27in;
+                height: 11.69in;
+                margin: 0;
+                padding: 0;
+                background: #0a0a0a !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            
+            body {
+                display: block;
+                min-height: auto;
+            }
+            
+            .book-cover {
+                width: 8.27in;
+                height: 11.69in;
+                background: linear-gradient(180deg, #0a0a0a 0%, #1a0000 50%, #0a0a0a 100%) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color-adjust: exact;
+                margin: 0;
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }
+            
+            .flame-bg {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            
+            .main-title {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color-adjust: exact;
+                /* Fallback color for printing if gradient doesn't work */
+                color: #ff6b35;
+            }
+            
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+        }
+        
+        /* Subtle flame background */
+        .flame-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 50% 20%, rgba(255, 107, 53, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 30% 80%, rgba(255, 69, 0, 0.06) 0%, transparent 35%);
+            opacity: 0.6;
+        }
+        
+        /* Top section - Title area */
+        .cover-top {
+            position: relative;
+            z-index: 2;
+            padding: 1.5in 1in 0.5in;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .main-title {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 0.95;
+            margin-bottom: 0.3in;
+            background: linear-gradient(180deg, #ffd700 0%, #ff6b35 50%, #ff4500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+            text-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #d4d4d4;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.8in;
+            line-height: 1.6;
+        }
+        
+        /* Center visual element - refined */
+        .cover-center {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1in;
+        }
+        
+        .molecular-icon {
+            width: 3in;
+            height: 3in;
+            position: relative;
+        }
+        
+        .molecule-node {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.6) 0%, rgba(255, 69, 0, 0.2) 50%, transparent 100%);
+            border: 2px solid rgba(255, 107, 53, 0.4);
+        }
+        
+        .molecule-node:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .molecule-node:nth-child(2) {
+            width: 50px;
+            height: 50px;
+            top: 50%;
+            left: 25%;
+        }
+        
+        .molecule-node:nth-child(3) {
+            width: 50px;
+            height: 50px;
+            top: 50%;
+            right: 25%;
+        }
+        
+        .molecule-node:nth-child(4) {
+            width: 45px;
+            height: 45px;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .molecule-bond {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 107, 53, 0.3) 50%, transparent 100%);
+        }
+        
+        .bond-1 {
+            width: 120px;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%) rotate(-30deg);
+        }
+        
+        .bond-2 {
+            width: 120px;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%) rotate(30deg);
+        }
+        
+        .bond-3 {
+            width: 100px;
+            top: 65%;
+            left: 50%;
+            transform: translateX(-50%) rotate(-30deg);
+        }
+        
+        .bond-4 {
+            width: 100px;
+            top: 65%;
+            left: 50%;
+            transform: translateX(-50%) rotate(30deg);
+        }
+        
+        /* Bottom section - Info */
+        .cover-bottom {
+            position: relative;
+            z-index: 2;
+            padding: 0.5in 1in 1in;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+        }
+        
+        .exhibition-info {
+            margin-bottom: 0.3in;
+        }
+        
+        .exhibition-title {
+            font-size: 22px;
+            color: #ff6b35;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.05in;
+        }
+        
+        .exhibition-year {
+            font-size: 28px;
+            color: #f5f5f5;
+            font-weight: 300;
+        }
+        
+        .author {
+            font-size: 24px;
+            color: #d4d4d4;
+            font-weight: 300;
+            font-style: italic;
+        }
+        
+        .tagline {
+            font-size: 20px;
+            color: #a0a0a0;
+            line-height: 1.5;
+            margin-top: 0.3in;
+            font-weight: 300;
+        }
+        
+        .project-info {
+            margin-top: 0.3in;
+            display: flex;
+            gap: 1in;
+            font-size: 16px;
+            color: #d4d4d4;
+            font-weight: 300;
+        }
+        
+        .project-number, .stand-number {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-number-label, .stand-number-label {
+            font-size: 12px;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.05in;
+        }
+        
+        .project-number-value, .stand-number-value {
+            font-size: 18px;
+            color: #ff6b35;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        /* Decorative elements */
+        .corner-decoration {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+        
+        .corner-top-left {
+            top: 0.5in;
+            left: 0.5in;
+            border-right: none;
+            border-bottom: none;
+        }
+        
+        .corner-top-right {
+            top: 0.5in;
+            right: 0.5in;
+            border-left: none;
+            border-bottom: none;
+        }
+        
+        .corner-bottom-left {
+            bottom: 0.5in;
+            left: 0.5in;
+            border-right: none;
+            border-top: none;
+        }
+        
+        .corner-bottom-right {
+            bottom: 0.5in;
+            right: 0.5in;
+            border-left: none;
+            border-top: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="book-cover">
+        <div class="flame-bg"></div>
+        
+        <!-- Decorative corners -->
+        <div class="corner-decoration corner-top-left"></div>
+        <div class="corner-decoration corner-top-right"></div>
+        <div class="corner-decoration corner-bottom-left"></div>
+        <div class="corner-decoration corner-bottom-right"></div>
+        
+        <div class="cover-top">
+            <h1 class="main-title">IGNITION<br>PROTOCOL</h1>
+            <p class="subtitle">An Evolutionary Engine<br>for Molecular Combustion</p>
+        </div>
+        
+        <div class="cover-center">
+        </div>
+        
+        <div class="cover-bottom">
+            <div class="exhibition-info">
+                <div class="exhibition-title">Stripe Young Scientist & Technology Exhibition</div>
+                <div class="exhibition-year">2026</div>
+            </div>
+            <div class="author">by Finn Harnedy</div>
+            <div class="tagline">
+                A computational framework for discovering, filtering, and operationalising synthetic fuel candidates through molecular generation and blend optimization.
+            </div>
+            <div class="project-info">
+                <div class="project-number">
+                    <div class="project-number-label">Project Number</div>
+                    <div class="project-number-value">PR08259</div>
+                </div>
+                <div class="stand-number">
+                    <div class="stand-number-label">Stand Number</div>
+                    <div class="stand-number-value">5211</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

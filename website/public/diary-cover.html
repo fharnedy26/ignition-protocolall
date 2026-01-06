@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignition Protocol - Project Diary Cover</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+            background: #0a0a0a;
+        }
+        
+        html {
+            background: #0a0a0a;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        
+        @media print {
+            html, body {
+                background: #0a0a0a !important;
+                width: 100% !important;
+                height: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            body {
+                background: #0a0a0a !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+            
+            .book-cover {
+                background: #0a0a0a !important;
+                background-image: linear-gradient(180deg, #0a0a0a 0%, #1a0000 50%, #0a0a0a 100%) !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                box-shadow: none !important;
+            }
+            
+            .flame-bg {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .book-cover {
+            width: 8.27in;
+            height: 11.69in;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a0000 50%, #0a0a0a 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 
+                        0 0 40px rgba(255, 107, 53, 0.1);
+        }
+        
+        /* Enhanced flame background */
+        .flame-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 50% 45%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 20%, rgba(255, 107, 53, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 30% 80%, rgba(255, 69, 0, 0.10) 0%, transparent 35%),
+                radial-gradient(circle at 70% 75%, rgba(255, 200, 0, 0.08) 0%, transparent 30%);
+            opacity: 0.7;
+        }
+        
+        /* Top section - Title area */
+        .cover-top {
+            position: relative;
+            z-index: 2;
+            padding: 1.5in 1in 0.5in;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .main-title {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 0.95;
+            margin-bottom: 0.3in;
+            background: linear-gradient(180deg, #ffd700 0%, #ff6b35 50%, #ff4500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+            text-shadow: 0 0 20px rgba(255, 107, 53, 0.3),
+                         0 0 40px rgba(255, 69, 0, 0.2),
+                         0 0 60px rgba(255, 107, 53, 0.1);
+            position: relative;
+        }
+        
+        .main-title::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -20px;
+            right: -20px;
+            bottom: -10px;
+            background: radial-gradient(ellipse at center, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(15px);
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #d4d4d4;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.8in;
+            line-height: 1.6;
+        }
+        
+        .project-name {
+            font-size: 24px;
+            color: #ff6b35;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-top: 0.5in;
+            font-style: italic;
+        }
+        
+        /* Center visual element */
+        .cover-center {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1in;
+        }
+        
+        /* Bottom section - Info */
+        .cover-bottom {
+            position: relative;
+            z-index: 2;
+            padding: 0.5in 1in 1in;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+        }
+        
+        .exhibition-info {
+            margin-bottom: 0.3in;
+        }
+        
+        .exhibition-title {
+            font-size: 22px;
+            color: #ff6b35;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.05in;
+        }
+        
+        .exhibition-year {
+            font-size: 28px;
+            color: #f5f5f5;
+            font-weight: 300;
+        }
+        
+        .author {
+            font-size: 24px;
+            color: #d4d4d4;
+            font-weight: 300;
+            font-style: italic;
+        }
+        
+        .tagline {
+            font-size: 18px;
+            color: #a0a0a0;
+            line-height: 1.5;
+            margin-top: 0.3in;
+            font-weight: 300;
+        }
+        
+        .project-info {
+            margin-top: 0.3in;
+            display: flex;
+            gap: 1in;
+            font-size: 16px;
+            color: #d4d4d4;
+            font-weight: 300;
+        }
+        
+        .project-number, .stand-number {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-number-label, .stand-number-label {
+            font-size: 12px;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.05in;
+        }
+        
+        .project-number-value, .stand-number-value {
+            font-size: 18px;
+            color: #ff6b35;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        /* Decorative elements */
+        .corner-decoration {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+        
+        .corner-top-left {
+            top: 0.5in;
+            left: 0.5in;
+            border-right: none;
+            border-bottom: none;
+        }
+        
+        .corner-top-right {
+            top: 0.5in;
+            right: 0.5in;
+            border-left: none;
+            border-bottom: none;
+        }
+        
+        .corner-bottom-left {
+            bottom: 0.5in;
+            left: 0.5in;
+            border-right: none;
+            border-top: none;
+        }
+        
+        .corner-bottom-right {
+            bottom: 0.5in;
+            right: 0.5in;
+            border-left: none;
+            border-top: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="book-cover">
+        <div class="flame-bg"></div>
+        
+        <!-- Decorative corners -->
+        <div class="corner-decoration corner-top-left"></div>
+        <div class="corner-decoration corner-top-right"></div>
+        <div class="corner-decoration corner-bottom-left"></div>
+        <div class="corner-decoration corner-bottom-right"></div>
+        
+        <div class="cover-top">
+            <h1 class="main-title">PROJECT<br>DIARY</h1>
+            <p class="subtitle">Development Journey<br>& Research Log</p>
+            <div class="project-name">Ignition Protocol</div>
+        </div>
+        
+        <div class="cover-center">
+        </div>
+        
+        <div class="cover-bottom">
+            <div class="exhibition-info">
+                <div class="exhibition-title">Stripe Young Scientist & Technology Exhibition</div>
+                <div class="exhibition-year">2026</div>
+            </div>
+            <div class="author">by Finn Harnedy</div>
+            <div class="tagline">
+                A detailed record of the development process, research findings, and evolution of the Ignition Protocol computational framework.
+            </div>
+            <div class="project-info">
+                <div class="project-number">
+                    <div class="project-number-label">Project Number</div>
+                    <div class="project-number-value">PR08259</div>
+                </div>
+                <div class="stand-number">
+                    <div class="stand-number-label">Stand Number</div>
+                    <div class="stand-number-value">5211</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

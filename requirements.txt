@@ -1,0 +1,38 @@
+﻿# SYSTE-26 Unified Fuel Discovery and Optimization Platform
+# Install with: pip install -r requirements.txt
+
+# Core scientific computing
+numpy>=1.24.0
+pandas>=2.0.0
+
+# GPU Acceleration (RTX 3060 Ti support)
+# Option 1: JAX (recommended for maximum performance)
+jax>=0.4.20
+jax[cuda12]>=0.4.20  # CUDA 12.x support for RTX 3060 Ti
+
+# Option 2: CuPy (alternative, easier migration from NumPy)
+# cupy-cuda12x>=12.0.0  # Uncomment if using CuPy instead of JAX
+
+# Parallel Processing (Multi-core CPU)
+joblib>=1.3.0
+
+# High-Performance Computing (JIT compilation)
+numba>=0.58.0
+
+# Advanced Optimization
+scipy>=1.11.0
+scikit-optimize>=0.9.0
+
+# Chemical Exploration (Molecular descriptors and generation)
+rdkit-pypi>=2023.3.1
+mordred>=1.2.0
+
+# Visualization
+matplotlib>=3.6.0  # For molecular and fitness visualization
+Pillow>=9.0.0  # For image processing (molecular visualization)
+
+# Optional dependencies (uncomment if needed)
+# seaborn>=0.12.0  # For statistical visualization
+# scikit-learn>=1.3.0  # For machine learning features
+# xgboost>=2.0.0  # For gradient boosting ML models
+# pymoo>=0.6.0  # For multi-objective optimization

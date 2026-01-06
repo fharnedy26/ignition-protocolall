@@ -1,0 +1,32 @@
+ 
+Parameterization: 1 seed molecule (sometimes 2 for variety, but primarily one to keep focus); 2 generations of mutations. This means the seed produces a 
+set of first-generation children, each of which then produces second-generation children. The branching factor per generation is moderate (each molecule 
+might spawn a handful of new ones). All standard filters and scoring apply. 
+Estimated candidate count: On the order of 10^2. With two generations from one seed, assuming for example ~5 mutations in the first generation and each 
+of those yields ~5 in the second, we predicted around 5 + 5*5 = 30 new molecules, plus the seed (~31). In practice, if fragments allow more combinations, 
+this can grow; we expected maybe a couple hundred at most. 
+Actual candidates processed: Approximately 200–250 molecules were generated and evaluated in the Demo run. The slight increase beyond the simple 
+estimate came from a few extra fragment possibilities and the engine not strictly limiting second-generation offspring from each first-gen candidate. 
+Execution time: This more involved run still completes quickly. On System A (i7-8700), the Demo profile typically finished in about 8 seconds. On System 
+B (i5-12th/RTX 3060 Ti), it completed in roughly 6 seconds. The newer system was about one-quarter to one-third faster, which is consistent with its higher 
+per-core speed. Both times are comfortably under half a minute, making this profile practical for demo settings. 
+With two mutation generations, the Demo profile yields more diverse and optimized molecules than Ultra-snappy, since the search explores a broader 
+space. The top 8 scoring molecules from a Demo run are shown below. We begin to see slightly larger or more complex structures appear (for example, 
+multi-branched alkanes or molecules with simple functional groups introduced, depending on fragment availability). Again, these outputs are primarily to 
+verify that the engine is producing reasonable results; any particularly high-scoring molecule here reflects the limited search scope. 
+Demo Profile Top 8 Molecules: 
+Rank  Molecule (SMILES)              Score 
+1     CC1=CC(C)CCC1                 0.88  
+2     CC(C)CC(C)C(C)C               0.87  
+3     CCC(C)COC(C)C                 0.85  
+4     CC(C)(C)COCC                  0.84  
+5     CCCCCC(C)C                    0.81  
+6     CC(C)C=C(C)C                  0.80  
+7     CCC(C)(C)COC                  0.78  
+8     CCC1=CCCCC1                   0.77  
+Table: Top eight candidates from the Demo profile run. Compared to Ultra-snappy, these include slightly more complex topologies (e.g., ring structures like 
+in Rank 1’s SMILES, or longer branched chains). The scoring function favored these candidates under the quick surrogate evaluation. 
+Classroom Profile 
+The Classroom profile represents a mid-range workload, suitable for an interactive exercise where users can run the engine and get results within a class or 
+workshop session. The configuration further scales up the search while aiming to keep runtime on the order of a few minutes: 
+15 

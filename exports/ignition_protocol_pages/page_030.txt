@@ -1,0 +1,39 @@
+ 
+Functional Group​
+ A specific group of atoms (e.g. –OH, –COOH, –NO₂) that determines a molecule’s chemical behaviour. The presence of oxygen-containing groups like 
+esters or alcohols can influence combustion efficiency and emissions. 
+Molecular Weight (MolWt)​
+ The total mass of a molecule, calculated by summing the atomic weights of its atoms. Heavier molecules often have lower volatility but higher energy 
+content. 
+logP (Partition Coefficient)​
+ A measure of how soluble a molecule is in fat versus water. High logP values suggest the molecule is hydrophobic, which affects how it blends with other 
+fuels and its environmental behaviour. 
+Oxygen-to-Carbon Ratio (O:C Ratio)​
+ A simple metric comparing the number of oxygen atoms to carbon atoms. Fuels with higher O:C ratios often burn more cleanly and produce fewer 
+particulates, but may have lower energy density. 
+Ring Count​
+ The number of aromatic or aliphatic rings in a molecule. This can influence fuel volatility, combustion stability and structural rigidity. 
+Halogen Penalty​
+ In the scoring system, molecules containing fluorine, chlorine or bromine are penalised, as halogenated compounds are typically toxic, persistent and 
+environmentally hazardous. 
+ 
+🧬 Computational Chemistry & AI Terms 
+Genetic Algorithm (GA)​
+ A computational search and optimisation method inspired by evolution. Candidate solutions are encoded, evaluated for “fitness”, and iteratively improved 
+through simulated mutation and recombination. In this project, molecules are “bred” based on fitness scores related to fuel properties. 
+Fitness Function​
+ A numerical score assigned to each candidate molecule to indicate how well it meets the desired criteria (e.g. molecular weight, logP, O:C ratio). Used to 
+rank molecules for selection and guide evolution. 
+Tanimoto Similarity / Distance​
+ A metric used to compare the structural similarity between two molecules, based on their binary fingerprints. A Tanimoto score close to 1 means two 
+molecules are almost identical; close to 0 means completely different. Used to enforce structural diversity. 
+Molecular Fingerprint​
+ A digital representation of a molecule's structure, often as a long string of binary digits. Each digit indicates the presence or absence of specific features or 
+substructures. 
+RDKit​
+ An open-source cheminformatics toolkit written in C++ and Python. Used for manipulating SMILES strings, calculating molecular properties and generating 
+visual diagrams of molecules. 
+PCA (Principal Component Analysis)​
+ A technique for simplifying complex datasets by reducing their dimensions. Used in this project to visualise trends across fuel candidates or combustion 
+fingerprints by compressing multiple property values into two or three principal axes. 
+29 

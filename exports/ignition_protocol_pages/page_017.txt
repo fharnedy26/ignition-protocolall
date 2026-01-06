@@ -1,0 +1,36 @@
+ 
+Parameterization: Typically 2–3 seed molecules to provide some structural diversity at the start. We allow 2 or 3 generations of mutations (in our tests we 
+used 3 generations for a deeper search). The branching factor is moderate to high – each molecule could spawn several new ones – but we may impose a 
+limit per generation to avoid runaway growth (for example, we might only take the top N candidates at each generation to continue expanding, a form of 
+heuristic pruning). 
+Estimated candidate count: On the order of 10^3–10^4. For instance, with 3 seeds and 3 generations, even a modest branching (say ~5 children per 
+molecule per generation) could yield: generation 1 ~15 children, generation 2 ~75, generation 3 ~375, plus earlier ones summing to a few hundred. In less 
+constrained expansion it could reach a few thousand. We anticipated a low thousands range of total candidates. 
+Actual candidates processed: In our Classroom profile run, roughly 3,000–5,000 molecules were generated and evaluated in total. We observed that the 
+filtering steps removed a good portion of intermediate candidates (especially by generation 3 many unlikely structures were filtered out), which kept the 
+final count toward the lower end of the range. Still, this was a substantial increase in workload compared to Demo. 
+Execution time: This profile’s runtime is on the order of minutes. On the i7-8700 system, the Classroom run completed in about 60 seconds (1 minute). On 
+the i5-12th Gen system, the same run took approximately 45 seconds. The newer System B maintained roughly a 25% faster execution, finishing the job in 
+under a minute. These times were comfortably within what we’d consider acceptable for an interactive classroom demo (where a one-minute wait is 
+reasonable for students, whereas 10+ minutes would be too slow). 
+With thousands of candidates explored, the engine had more opportunity to find high-scoring molecules. The top 8 results from the Classroom profile run 
+are shown below. These likely include even more complex or optimized structures (for example, larger hydrocarbons, possibly polycyclic structures or ones 
+including oxygenated fragments if those survived filtering and improved the score). The diversity and quality of top molecules here underscore that a 
+broader search can yield better-scoring candidates – but again, our focus is that the engine handled this larger search within a short time. 
+Classroom Profile Top 8 Molecules: 
+Rank  Molecule (SMILES)                   Score 
+1     CC(C)C(C(O)C)=C(C)C                0.91  
+2     CC1=CC(C)C(C)C(C)C1                0.89  
+3     C=C(C)C(C)CC(C)C(C)C               0.88  
+4     CC(C)(COC)C(C)C                    0.87  
+5     C1CC(C)CCC1C(C)C                   0.85  
+6     CC(C)C=C(C)COC                     0.83  
+7     CCC(C)(C)C(O)CC                    0.82  
+8     CCC=C(C)C(C)C(C)C                  0.80  
+Table: Top eight candidates from the Classroom profile. These include some larger and more unusual structures made possible by deeper mutation 
+generations (e.g., the presence of an –O– linker in some candidates, multiple branching, or a cyclic backbone). The scores are higher on average than in the 
+Demo run, reflecting that a wider search found candidates more closely matching the surrogate optimal criteria. 
+Light Stress Profile 
+Moving into the overt stress-test category, the Light Stress profile significantly ramps up the workload to test the engine’s performance limits. This profile is 
+not something one would run for casual use; it is specifically to push more data through the pipeline and observe how the system copes. 
+16 

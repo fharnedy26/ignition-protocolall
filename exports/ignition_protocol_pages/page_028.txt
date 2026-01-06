@@ -1,0 +1,41 @@
+ 
+Figure 6-3 plots the highest fitness score in each generation for the first twenty generations. The curve rises steeply over the initial ten generations as 
+obvious low-hanging improvements – adding modest oxygen content and merging compatible fragments – are captured. Between generations 10 and 15 
+the curve flattens, indicating a temporary stagnation as the algorithm explores similar regions. A subsequent uptick after generation 15 corresponds to a 
+successful mutation that introduced a five-membered oxygenated ring, boosting both molecular weight and O:C ratio without exceeding the ring penalty. 
+By generation 20 the best fitness has improved by 23 percentage points relative to the seed population, illustrating effective convergence under the 
+multi-criteria scoring regime. 
+Planned Experimental Validation 
+Physical combustion and biodegradability tests will start on 22 August. The top fifteen candidates will be pre-selected for laboratory evaluation based on 
+synthetic feasibility, predicted flame speed and environmental health indices. Detailed protocols for flame imaging, spectral collection and microbial slurry 
+assays are provided in Section 5 Methodology. Comparative metrics against reference fuels (iso-octane, toluene, ethanol and petrodiesel) will be recorded 
+to validate the computational predictions. 
+Interim Interpretation 
+The one-thousand-generation study confirms that a fragment-based genetic algorithm, combined with a carefully weighted fitness function, can traverse 
+chemical space efficiently and converge on structures that satisfy multiple fuel-relevant constraints. The early-generation results demonstrate swift 
+adaptation, while the plateau-and-surge behaviour at later stages highlights the importance of diversity maintenance. The selected top candidates now 
+await empirical testing to verify that their predicted benefits translate to real-world combustion and environmental performance. 
+Next Analytical Steps 
+Pending arrival of the first experimental data, planned computational tasks include: 
+●​
+Calculation of heat of combustion and net heating values using group-additivity methods​
+ 
+●​
+Quantum-chemical evaluation (e.g. DFT) of a subset to validate enthalpy estimates​
+ 
+●​
+Sensitivity analysis to quantify how each fitness component influences convergence​
+ 
+These analyses will deepen understanding of the link between structural features and overall fitness, further refining the evolutionary engine for future 
+iterations. 
+ 
+ 
+ 
+7 Discussion 
+The 1000-generation run demonstrates that fragment-based evolutionary design can discover chemically plausible, oxygen-rich molecules while 
+maintaining population diversity. The steady increase in fitness, together with the broadened property histograms, implies that the scoring weights were 
+well balanced: no single objective dominated at the cost of the others. 
+Notably, the O:C ratio rose only modestly, suggesting that further tuning may be needed if ultra-low soot performance is prioritised. Conversely, the 
+suppression of highly aromatic rings indicates that the halogen and ring penalties are functioning correctly, steering the search away from environmentally 
+problematic structures. 
+27 

@@ -1,0 +1,49 @@
+ 
+synthetic fuels (like iso-octane or other tailored hydrocarbons) have an easier path because they mimic existing fuels. I bear this in mind as a practical 
+regulatory constraint – for instance, a fuel candidate with very low volatility or very high boiling point might not be acceptable as “gasoline” under 
+standards (which specify a volatility range and distillation curve). Likewise, if I design an amazing fuel molecule that unfortunately degrades certain rubber 
+seals or is toxic, no regulation would allow it commercially. Therefore, part of the literature review involves understanding fuel specs: gasoline must 
+evaporate enough for cold start (hence a required T₁₀ temperature – the temperature at which 10% of fuel evaporates – of roughly <70°C, etc.), diesel must 
+have a flash point above 52°C for safety, and so on. Table 3.1 at the end of Section 3.5 summarizes some of these standard property requirements. Meeting 
+regulatory-driven specs is almost as important as achieving performance targets. In summary, environmental regulations have continually raised the bar 
+for fuel quality and emissions performance. These rules have effectively eliminated harmful fuel components (lead, sulfur, high vapor toxics) and are 
+driving interest in new fuels that can further cut pollutants and CO₂. My Ignition Protocol is partly motivated by this context: there is a recognized need for 
+cleaner fuels to enable cleaner combustion. The project’s multi-objective goals (e.g., minimizing sooting and NOx tendencies while maximizing efficiency) 
+directly align with the direction regulations have been moving. By anticipating future regulatory needs (like even lower particulate or the usage of non-fossil 
+carbon), I hope the molecules discovered could be ahead of their time and support the next generation of clean combustion engines. 
+3.5 Fuel Performance Metrics: Octane, Cetane, and Other Key Indices 
+To quantitatively compare fuels, we use a set of well-established performance metrics. In this section, I explain the most important ones – Octane number 
+(RON/MON) for spark-ignition fuels, Cetane number for diesel fuels, Heating value (energy content), and sooting indices (TSI/YSI) – as well as how they are 
+measured and why they matter. These metrics form part of the “fitness function” in my AI-driven fuel design, guiding the algorithm toward 
+high-performance candidates. Octane Number (Resistance to Knock): Octane number is the cornerstone metric for gasoline. It measures a fuel’s resistance 
+to auto-ignition under pressure, which is critical in avoiding engine knock in spark-ignition engines. The octane scale was defined using two reference 
+hydrocarbons: iso-octane (2,2,4-trimethylpentane), a highly knock-resistant fuel set to 100 octane, and n-heptane, which knocks very easily, set to 0. A 
+gasoline’s Research Octane Number (RON) is determined by running it in a standard single-cylinder test engine at mild conditions and comparing its knock 
+tendency to mixtures of iso-octane and n-heptane. For example, if a fuel has the same knock behavior as a mixture of 90% iso-octane/10% n-heptane, its 
+RON is 90. There is also a Motor Octane Number (MON) test, done at higher engine stress (higher temperature and speed), which usually yields a lower 
+number. The difference RON – MON is called octane sensitivity; fuels with high sensitivity (like many alcohols and aromatics) have a significantly higher 
+RON than MON. Modern pump gasoline is often rated by the average (R+M)/2 in some countries. In practice: Regular unleaded in many places has (R+M)/2 
+~87 (which corresponds to RON ~91–92), while premium might be 93 (RON ~98). High octane fuel allows engines to run at higher compression ratios or 
+more advanced ignition timing, which improves efficiency and power. If octane is too low for a given engine, the fuel can ignite spontaneously ahead of the 
+flame front (engine knock), causing potentially severe engine damage. Knock also forces engineers to be conservative (lower compression, retarded spark 
+timing), sacrificing efficiency. Therefore, a high octane number is crucial for SI engine performance. Chemically, fuel components that are high-octane 
+include branched alkanes, cycloalkanes, aromatics, and alcohols, whereas straight-chain alkanes are low-octane. For example, iso-octane itself is 100 RON, 
+while n-heptane is 0. Toluene, an aromatic, has RON ~120. Ethanol has RON around 108. This explains why refining processes that increase gasoline’s 
+branching or aromatic content raise octane (but note: aromatics also increase soot, a trade-off discussed earlier). In literature, Leone et al. (2014) showed 
+that fuels with high octane sensitivity can further benefit modern turbocharged engines, which operate under both mild and severe conditions. For my 
+project, octane number (particularly RON) is a key target – I aim for molecules that would have high knock resistance so they could be used in advanced 
+engines (like turbo or high-compression engines) without issue. I also pay attention to structural indicators of octane: e.g., incorporating branching or certain 
+functional groups known to suppress knock. It’s worth noting that octane number does not correlate with energy content or combustion speed directly – it’s 
+purely about auto-ignition tendency. Thus, a fuel can be high octane but have lower energy density (like ethanol). A comprehensive design needs to 
+optimize multiple factors, not octane alone. Cetane Number (Ignition Quality): Cetane number is essentially the opposite of octane – it measures how 
+easily a fuel ignites under compression in a diesel engine. The cetane scale uses cetane (n-hexadecane) as the high reference (defined as 100 cetane) and 
+originally 1-methylnaphthalene (an aromatic) as the low reference (0 cetane, though later a different low reference with CN 15 was used for practical 
+reasons). In the ASTM D613 cetane test, the fuel is run in a special engine where you vary the compression until it just ignites at a specified delay, and then 
+compare that compression to reference blends. High cetane fuels ignite quickly (short ignition delay), which is desired in diesel engines for smooth 
+operation. Typical diesel fuels have cetane in the 40–55 range; European specs require a minimum ~51. If cetane is too low, the fuel doesn’t ignite promptly 
+upon injection; it accumulates and then auto-ignites in a big burst, causing knocking combustion and a spike in NOx. Low cetane also worsens cold start and 
+increases engine noise. Molecular structure influences cetane strongly: straight-chain alkanes and some saturated compounds have high cetane (they ignite 
+easily), whereas branched alkanes, cyclics, and aromatics have low cetane. For example, cetane (n-C16H34) = 100 by definition; isocetane (a highly 
+branched C16) has cetane ~15; typical aromatics might have cetane near 0–20. Diesel fuel is a blend of many hydrocarbons, but refiners often add a small 
+amount of cetane improver additives (like 2-ethylhexyl nitrate) to bump the cetane number if the base fuel is marginal. In my project, if I target fuels for 
+9 

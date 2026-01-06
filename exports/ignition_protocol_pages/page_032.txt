@@ -1,0 +1,33 @@
+ 
+ 
+References 
+IEEE Format 
+[1] M. Abadi et al., “TensorFlow: Large-scale machine learning on heterogeneous systems,” 2016. [Online]. Available: https://www.tensorflow.org 
+[2] A. G. Abdul Jameel et al., “Yield sooting index correlations for oxygenated fuels,” Fuel, vol. 286, p. 119390, 2021. 
+[3] K. Aikawa et al., “Development of the Particulate Matter Index (PMI) for gasoline,” SAE Technical Paper 2010-01-2115, 2010. 
+[4] J. Blank and K. Deb, “pymoo: Multi-objective optimization in Python,” IEEE Access, vol. 8, pp. 89497–89509, 2020. 
+[5] M. Chen, K. Zhou, and D. Liu, “A novel AI-based combustion diagnostic technology for the identification of chemical source information via flame 
+images,” Combustion and Flame, vol. 260, p. 113208, 2024. 
+[6] Y. Chen et al., “Random-forest classification of flame images,” Combustion and Flame, vol. 259, pp. 112–125, 2024. 
+[7] K. Deb, A. Pratap, S. Agarwal, and T. Meyarivan, “A fast and elitist multiobjective genetic algorithm: NSGA-II,” IEEE Trans. Evol. Comput., vol. 6, no. 2, 
+pp. 182–197, 2002. 
+[8] J. Degen, C. Wegscheid-Gerlach, A. Zaliani, and M. Rarey, “On the art of compiling and using ‘drug-like’ chemical fragment spaces,” ChemMedChem, 
+vol. 3, no. 10, pp. 1503–1507, 2008. 
+[9] EPA, “Reformulated gasoline and oxygenated fuels program: CO reduction rationale,” U.S. Environmental Protection Agency, 1998. 
+[10] P. Ertl and A. Schuffenhauer, “Estimation of synthetic accessibility score of drug-like molecules based on molecular complexity and fragment 
+contributions,” J. Cheminformatics, vol. 1, p. 8, 2009. 
+[11] L. Fleitmann, A. M. Schweidtmann, M. Skiborowski, and A. Mitsos, “Molecular design of fuels for maximum spark-ignition engine efficiency,” Energy & 
+Fuels, vol. 37, no. 4, pp. 2213–2229, 2023. 
+[12] E. Galloni, “HCCI combustion control with fuel reactivity,” Energy Convers. Manag., vol. 63, pp. 3–11, 2012. 
+[13] I. Glassman, R. A. Yetter, and N. Glumac, Combustion, 5th ed., Academic Press, 2015. 
+[14] S. R. Gollahalli, “Water–fuel emulsions: NOx/soot reduction,” Prog. Energy Combust. Sci., vol. 9, no. 3, pp. 193–212, 1983. 
+[15] W. H. Green et al., “MolPAL: Multi-objective pool-based active learning for molecular discovery,” Digital Discovery, vol. 3, pp. 375–390, 2024. 
+[16] R. Harris, “Automotive fuels: Octane quality and engine knock,” SAE Technical Paper, 1990. 
+[17] C. R. Harris et al., “Array programming with NumPy,” Nature, vol. 585, pp. 357–362, 2020. 
+[18] J. B. Heywood, Internal Combustion Engine Fundamentals, McGraw-Hill, 1988. 
+[19] C. Y. Hsuan, W. R. Jhang, W. J. Lin, and C. L. Su, “Water-in-oil emulsion for reduced NOx,” Energies, vol. 12, no. 6, p. 1002, 2019. 
+[20] ICCT, “Global fuel sulfur limits and emission standards,” Int. Council on Clean Transportation Report, 2016. 
+[21] Intel Corp., “12th Gen Intel® Core™ Processors Datasheet,” 2022. 
+[22] H. Jääskeläinen, “Cetane number and diesel fuel quality,” DieselNet Tech. Rep., 2007. 
+[23] W. Jin, R. Barzilay, and T. Jaakkola, “Junction Tree Variational Autoencoder,” in Proc. ICML, pp. 2323–2332, 2018. 
+31 

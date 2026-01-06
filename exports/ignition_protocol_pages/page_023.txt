@@ -1,0 +1,45 @@
+ 
+Sorting and Selection: In our implementation, after scoring, we often sort candidates (for example, to pick the top N to carry to the next generation or to 
+present the top results). Sorting large lists is O(n log n), which starts to matter for n in the hundreds of thousands. Indeed, in the heavy profiles, sorting 
+steps for large candidate lists showed up as noticeable time chunks. In Brutal, we had to sort ~800k scored entries to identify the top molecules – an 
+operation that by itself can take a few seconds or more in Python even with efficient sorting algorithms, and we might be doing such sorts multiple times 
+across generations. 
+Heuristic Filters: The filters themselves are generally fast (simple checks), but they still had to be applied to every generated molecule. In the worst-case 
+profile, a few million candidates were subject to filtering logic. If the filter code isn’t vectorized, that’s millions of Python function calls or method checks. 
+We believe the filtering stage was less costly than scoring overall (since they are simpler operations), but it’s another linear pass through a huge list, 
+contributing to the total runtime. 
+When comparing the two systems, we noticed that performance diverged slightly under certain bottlenecks. For example, the sorting and heavy loop 
+operations benefited from the i5-12th Gen’s faster single-thread performance, so System B pulled ahead more during those phases. If there was any 
+multi-threaded component (some libraries release Python’s GIL during heavy computations), the i5’s additional cores might have contributed marginally. 
+But largely, both systems were bogged down by the same fundamental bottlenecks – just that the faster clock and newer architecture of System B made 
+each bottleneck less painful. In summary, the scaling behavior observed is that runtime increases roughly linearly with the number of candidates, with 
+minor slowdowns introduced by memory and algorithmic overhead at very large scales. The newer hardware provides a proportional speedup, but does 
+not change the fundamental scaling trend. This tells us that to handle even larger searches or to integrate more complex scoring (like ML models), we must 
+improve the algorithmic efficiency of the engine itself. The next section discusses opportunities for such improvements. 
+Opportunities for Optimization and Future Integration 
+The benchmarking results highlight several areas where we can optimize the engine for better computational efficiency: 
+Vectorization of Computations: One clear opportunity is to reduce Python-level looping by using vectorized operations. Many parts of filtering and scoring 
+involve performing the same calculation on each molecule (e.g., computing a property, checking a rule). Instead of a Python loop, we could batch these 
+operations. For instance, if we represent certain molecular features in arrays, we could use NumPy or similar libraries to compute a whole array of values at 
+once in C speed. Likewise, RDKit or other cheminformatics toolkits often have functions to compute descriptors for a list of molecules in one go, which 
+could internally use C++ loops rather than Python loops. By refactoring our scoring code to utilize such batch computations, we can leverage SIMD 
+vectorization and efficient low-level loops to dramatically speed up the per-candidate calculations. This would especially benefit the heavy profiles, 
+turning what is now millions of Python function calls into a handful of optimized library calls. 
+Parallel Processing and GPU Acceleration: Currently, the engine mostly runs on a single thread. Yet, the problem is embarrassingly parallel in many respects 
+– evaluating one molecule is independent of evaluating another. We could use multi-threading or multi-processing on the CPU to distribute the workload 
+of scoring and filtering across cores. Python’s Global Interpreter Lock (GIL) can complicate multi-threading, but we can employ multi-processing (separate 
+processes for different chunks of molecules) or use libraries in C++ that handle their own threading. On System B, we also have a powerful GPU which 
+remains unused. There is significant GPU potential here: if we implement or incorporate a GPU-accelerated kernel for scoring (for example, a neural 
+network property predictor or even a custom GPU kernel for computing certain descriptors), we could evaluate thousands of molecules in parallel on the 
+GPU, potentially achieving an order-of-magnitude speedup for that stage. Similarly, GPUs could accelerate brute-force searching if we recast the problem 
+(for example, using GPU to join fragments or evaluate combinations, though that is more complex). The easiest win is likely to integrate a machine learning 
+model for scoring (discussed below) which can run on the GPU, taking advantage of its parallelism to score a batch of candidates much faster than CPU 
+could serially. 
+Algorithmic Pruning and Heuristics: While our filters already cut down the search space, we can consider smarter heuristics to prune earlier and reduce the 
+number of candidates that go through expensive stages. For example, instead of generating every possible mutation in later generations, we could use 
+intermediate scoring to decide which branches of the search to explore further (a kind of beam search or heuristic tree search). This would trade a bit of 
+approximate decision-making for potentially huge savings in the number of candidates considered. Our results showed that by Heavy and Brutal profiles, a 
+lot of the engine’s work was spent on candidates that ultimately weren’t top performers (since only a tiny fraction make it to the top 8). If we can identify 
+unpromising candidates sooner (even with a slightly more expensive check upfront), we could curtail their descendants and save time overall. This is a 
+classic trade-off in search algorithms: do more work per candidate to reduce the total number of candidates. 
+22 

@@ -1,0 +1,497 @@
+PROJECT DIARY
+Ignition Protocol: An Evolutionary Engine for Molecular Combustion
+Stripe Young Scientist & Technology Exhibition 2026
+by Finn Harnedy
+
+================================================================================
+1. KICKOFF
+================================================================================
+
+[YOUR REFLECTION HERE - June 2025: Why did you start this project? What motivated you?]
+
+Ignition Protocol is a computational framework for discovering, filtering, and operationalizing synthetic fuel candidates. The project emerged from a recognition that synthetic fuels and fuel blends offer a path to reducing reliance on fossil energy while meeting global demand and tightening emissions constraints.
+
+The project combines two complementary systems:
+1. A molecular generation module that evolves candidate molecules from fragment libraries using genetic algorithms
+2. A deterministic blend optimization engine that selects and proportions components into lab-ready fuel blends
+
+The goal is not just to rank "interesting molecules" but to produce candidate blends that can be mixed, tested, and iterated upon with clear reproducibility.
+
+Key technologies:
+- RDKit for molecular validation and manipulation
+- GDB-11 database (molecules with up to 11 atoms, optimized for fuel applications)
+- Genetic algorithms for molecular evolution
+- Deterministic optimization for blend formulation
+- Python-based computational framework
+
+The project aims to bridge computational fuel design with practical experimental validation, creating a scalable approach to fuel discovery that respects real-world constraints and produces actionable results.
+
+================================================================================
+2. BRAINSTORMING
+================================================================================
+
+[YOUR REFLECTION HERE - June-July 2025: What ideas did you explore? What research did you do? How did you decide on this topic?]
+
+June 2025:
+The project began with extensive literature review focusing on three key areas:
+
+1. Combustion Fundamentals and Fuel Performance Metrics
+   - Research into stoichiometry, ignition chemistry, volatility, and flame propagation
+   - Understanding key operational metrics: octane number (RON/MON) for spark-ignition fuels, cetane number for compression-ignition fuels, energy density (LHV), and sooting tendency proxies (PMI/TSI)
+   - These metrics would become the foundation for computational scoring and blend constraints
+
+2. Emissions and Regulatory Constraints
+   - Study of emissions drivers (NOx, soot/PM, CO, UHC)
+   - Infrastructure compatibility requirements
+   - Regulatory constraints: volatility limits, sulfur limits, density/flashpoint constraints, seasonal RVP management
+   - Recognition that realistic fuel design must treat these as constraints, not afterthoughts
+
+3. AI and Evolutionary Search for Molecular Design
+   - Exploration of evolutionary computation in molecular design
+   - Genetic algorithms, mutation/crossover operators, multi-objective optimization
+   - Modern approaches using surrogate models and ML predictors
+   - Decision to use lightweight structural heuristics and fast property proxies initially, with pathway to ML integration
+
+July 2025:
+Initial project concepts explored:
+- Basic engine prototype focused on molecular generation efficiency
+- Fragment-based approach using BRICS (Breaking of Retrosynthetically Interesting Chemical Substructures)
+- Heuristic filtering for chemical validity and fuel-relevance
+- Surrogate models for fast property estimation
+
+The evolution from basic engine to unified pipeline:
+- Initial concept: Simple molecular generation tool
+- Realization: Need for operational realism - molecules must work in actual blends
+- Future vision: Combine molecular generation with blend optimization (implementation planned for later)
+- Key insight: System should eventually produce lab-ready recipes, not just interesting molecules
+
+[YOUR REFLECTION HERE - How did conversations with mentors or friends influence your thinking?]
+
+================================================================================
+3. YOUR GAME PLAN
+================================================================================
+
+[YOUR REFLECTION HERE - July-August 2025: How did your idea evolve into a concrete plan? What changes did you make based on feedback?]
+
+July 2025:
+The project plan evolved from a simple molecular generator to a unified fuel design pipeline. Key architectural decisions:
+
+1. Molecular Generator Focus:
+   - Fragment-based evolution using genetic algorithms
+   - Fragment-based evolution from GDB-11 database (up to 11 atoms, fuel-optimized)
+   - Multi-objective fitness function balancing:
+     * Molecular weight
+     * Oxygen-to-carbon ratio
+     * Volatility
+     * Combustion potential
+     * H-bonding capacity
+   - Diversity preservation through Tanimoto similarity metrics
+   - 100% chemical validity via RDKit validation
+
+2. Future Vision:
+   - Recognition that molecules need to work in actual blends
+   - Concept of combining molecular generation with blend optimization (to be implemented later)
+   - Idea for conversion module to transform molecules into blend-compatible components
+
+August 2025:
+Refinements based on early development:
+- Decision to use GDB-11 instead of larger databases (better suited for fuel applications)
+- Implementation of memory-efficient streaming for large fragment libraries
+- Fuel-relevance filtering (C/H/O only molecules)
+- Preprocessing utilities for faster fragment loading
+- Focus on getting the molecular generator working well first
+
+Key design principles established:
+- Operational Realism: Future system should optimize realistic blends under real-world constraints
+- Practical Integration: Novel molecules should be convertible to blend-compatible records
+- Reproducibility: Future outputs should be deterministic with complete parameter capture
+- End-to-End Pipeline Vision: From fragments to final blend recipes (to be fully realized when blend optimizer is added)
+
+[YOUR REFLECTION HERE - What feedback did you receive? How did it change your approach?]
+
+================================================================================
+4. LAB WORK
+================================================================================
+
+[NOTE: This section covers computational/software development work, not physical laboratory experiments]
+
+August 2025:
+Basic Engine Development and Fragment Integration
+
+- Implemented core molecular generation engine using genetic algorithms
+- Fragment library integration: Working with GDB-11 database (2.7M+ molecules)
+- Memory-efficient streaming implementation for processing large archives
+- Fuel-relevance filtering: Automatic extraction of C/H/O-only molecules
+- Fragment merging system: Custom fragment-based approach (not BRICS)
+- Fitness function development: Multi-objective optimization implementation
+  * Energy considerations
+  * Oxygen balance
+  * Volatility metrics
+  * H-bonding capacity
+- RDKit integration for chemical validity checking
+- Early testing: Basic engine functional, generating valid molecules
+
+September 2025:
+Blend Optimizer Development and Unified Pipeline
+
+- Began development of blend optimizer (fuel_engine module) - this was when the blend optimization component was first implemented
+- Created deterministic blend optimization engine
+- Greedy-then-refine algorithm implementation
+- Fuel-type specific constraint enforcement:
+  * Gasoline: RON/MON requirements, volatility limits (T10/T90, RVP)
+  * Diesel: Cetane requirements, density bounds
+  * Jet fuel: Specific property ranges
+- Component library CSV system for established fuels
+- Novel component support with volume fraction caps
+- Lab-ready recipe generation: Volume fractions, mL and grams per 1000 mL
+- Unified pipeline: Connecting molecular generator to blend optimizer
+  * molecule_to_component.py: Bridge module for conversion
+  * Property estimation: RON/MON/cetane/LHV/PMI/TSI/density/T10/T50/T90/RVP
+- Initial optimization tests and refinement
+
+October 2025:
+Engine Improvements and Young Scientist Entry Preparation
+
+- Addressing diversity issues in molecular evolution
+  * Problem: Only 4 unique molecules out of 54 generated (7.4% diversity)
+  * Solution: Increased base diversity rate from 15% to 25%
+  * Fragment cache expansion: 200K → 500K fragments
+- Novel molecule integration challenges
+  * Problem: Novel molecules not appearing in optimized blends
+  * Solution: Reduced novel penalty from 10% to 2% per volume fraction
+  * Multiple evolution runs: 5 → 10 independent runs
+- Enhanced multiple evolutions script:
+  * Generations: 100 → 150
+  * Population size: 50 → 75
+  * Survivors: 10 → 15
+- Young Scientist entry submission preparation
+- Documentation: Writing project book sections
+
+November 2025:
+Home Synthesis Features and Video Creation
+
+- Home synthesis feasibility assessment implementation
+  * synthesis.py: Synthesis route prediction module
+  * home_synthesis_fragments.py: Curated library of home-accessible building blocks
+  * Synthesis feasibility scoring (0-100 scale)
+  * Reaction type identification: Esterification, Williamson Ether Synthesis, Reduction, Oxidation
+- Enhanced fitness functions:
+  * compute_home_synthesis_fitness(): Combined synthesis + fuel fitness
+  * estimate_oxidation_susceptibility(): Oxidation risk prediction
+  * estimate_phase_separation_risk(): Phase separation assessment
+  * estimate_ph_change(): pH change prediction
+- Generator updates:
+  * evolve_home_synthesizable_molecules(): Evolution with synthesis constraints
+  * Synthesis metadata attachment to components
+- Component conversion enhancements:
+  * Synthesis metadata in component records (feasibility, complexity, reaction type, difficulty, yield estimate)
+  * Stability notes and oxidation susceptibility scores
+- Video creation (End of November): Scripting, filming, and editing project video
+- Final engine refinements: Performance optimizations, bug fixes
+
+December 2025:
+Final Refinements and Poster Development
+
+- Poster development: Design concepts, layout planning, content creation
+- Final code refinements and optimization
+- Website development: Next.js website for project documentation
+- Final documentation: Completing project book
+- Preparation for SYSTE'26 exhibition
+
+[YOUR REFLECTION HERE - What were the biggest technical challenges? How did you solve them?]
+
+================================================================================
+5. CRUNCHING NUMBERS
+================================================================================
+
+[YOUR REFLECTION HERE - September-November 2025: What patterns did you discover? What surprised you?]
+
+September 2025:
+Initial Data Analysis from Molecular Evolution
+
+- GDB-11 processing: Successfully processing 2.7M+ fragments
+- Memory-efficient streaming: Processing large archives without loading everything into memory
+- Fuel-relevance filtering: Extracting C/H/O-only molecules from database
+- Reservoir sampling: Uniform random sampling from large datasets
+- Cache building: Fixed-size caches for efficient random access
+
+Early results:
+- Molecular evolution generating valid fuel-like molecules
+- Fitness scores competitive with common fuels (e.g., 45.45 vs MTBE 46.03)
+- Fragment diversity analysis: Tracking unique molecules per generation
+
+October 2025:
+Blend Optimization Results and Analysis
+
+- Blend optimization testing across fuel types:
+  * Gasoline: RON/MON optimization, volatility constraint satisfaction
+  * Diesel: Cetane optimization, density bounds
+  * Jet fuel: Property range optimization
+- Multi-objective scoring analysis:
+  * RON, cetane, LHV, PMI, cost trade-offs
+  * Component selection patterns
+  * Novel molecule integration rates
+- Performance metrics:
+  * Optimization speed: 0.1-0.3s for typical component libraries
+  * Deterministic reproducibility: Same seed → identical results
+- Diversity analysis:
+  * Initial problem: Only 7.4% diversity (4 unique out of 54)
+  * After improvements: Target 15-25% diversity
+  * Multiple runs: Combining results from 10 independent evolutions
+
+November 2025:
+Advanced Analysis and Pattern Discovery
+
+- Fitness progression analysis:
+  * Tracking fitness evolution over generations
+  * Plateau detection and early stopping mechanisms
+  * Diversity preservation effectiveness
+- Novel molecule analysis:
+  * Property estimation accuracy
+  * Integration success rates after penalty reduction
+  * Cost-benefit analysis of novel vs. established components
+- Synthesis feasibility analysis:
+  * Home-synthesizable molecule generation rates
+  * Synthesis complexity distribution
+  * Reaction type frequency analysis
+- Stability prediction analysis:
+  * Oxidation susceptibility patterns
+  * Phase separation risk assessment
+  * pH change predictions
+
+Tools and methods used:
+- Python: pandas for data analysis
+- RDKit: Molecular property calculation
+- Mordred: Molecular descriptor calculation
+- Matplotlib: Visualization of fitness progression
+- Statistical analysis: Diversity metrics, property distributions
+
+[YOUR REFLECTION HERE - What data surprised you? What patterns were unexpected?]
+
+================================================================================
+6. TRIAL AND ERROR
+================================================================================
+
+[YOUR REFLECTION HERE - Throughout the project: What went wrong? How did you fix it?]
+
+August 2025:
+Early Engine Challenges
+
+- Initial fragment merging issues: Ensuring chemical validity during fragment combination
+- Solution: Enhanced RDKit validation at each step
+- Memory management: Handling large fragment libraries efficiently
+- Solution: Implemented streaming and caching mechanisms
+- Fitness function tuning: Balancing multiple objectives
+- Solution: Iterative refinement of weight parameters
+
+September 2025:
+Blend Optimizer Issues
+
+- Constraint satisfaction problems: Ensuring all fuel-type specifications met
+- Solution: Enhanced constraint checking and refinement algorithm
+- Novel component integration: Initial difficulty incorporating novel molecules
+- Solution: Improved component conversion and property estimation
+- Performance optimization: Ensuring fast optimization times
+- Solution: Efficient greedy algorithm with targeted refinement
+
+October 2025:
+Diversity Problems and Novel Molecule Integration
+
+- Problem: Low diversity in molecular evolution (only 7.4% unique molecules)
+- Root cause: Early convergence, insufficient diversity injection
+- Solutions implemented:
+  * Increased base diversity rate from 15% to 25%
+  * Expanded fragment cache from 200K to 500K
+  * Enhanced multiple evolution runs (5 → 10 runs)
+  * Increased generations (100 → 150), population size (50 → 75), survivors (10 → 15)
+- Problem: Novel molecules not appearing in optimized blends
+- Root causes:
+  * Novel penalty too high (10% per volume fraction)
+  * Limited novel molecule pool (only 2 unique molecules)
+  * Novel molecules not competitive enough
+- Solutions implemented:
+  * Reduced novel penalty from 10% to 2% (80% reduction)
+  * Multiple evolution runs to expand novel molecule library
+  * Improved property estimation for novel molecules
+
+November 2025:
+Home Synthesis Implementation Challenges
+
+- Synthesis route prediction accuracy
+- Solution: Enhanced reaction type identification and condition estimation
+- Fragment library curation: Ensuring home-accessible building blocks
+- Solution: Created curated HOME_SYNTHESIS_FRAGMENTS library
+- Synthesis feasibility scoring: Balancing accuracy with computational speed
+- Solution: Lightweight heuristics based on functional groups and complexity
+- Integration with existing fitness functions
+- Solution: Combined fitness approach (synthesis + fuel properties)
+
+December 2025:
+Final Refinements
+
+- Code optimization and cleanup
+- Documentation completeness
+- Poster design iterations
+- Website development challenges
+
+[YOUR REFLECTION HERE - What was the most frustrating problem? What did you learn from fixing it?]
+
+================================================================================
+7. LOOKING BACK
+================================================================================
+
+[YOUR REFLECTION HERE - December 2025: Reflect on your journey. What new skills did you learn? What unexpected discoveries did you make?]
+
+Looking back on the project from June to December 2025, several key learnings emerge:
+
+Technical Skills Developed:
+- Advanced Python programming: Genetic algorithms, optimization, data processing
+- Cheminformatics: RDKit, molecular manipulation, property estimation
+- Software architecture: Modular design, unified pipeline development
+- Data analysis: Statistical analysis, pattern recognition, visualization
+- Computational chemistry: Understanding fuel properties, combustion science
+
+Unexpected Discoveries:
+- The importance of operational realism: Not just generating interesting molecules, but producing actionable blends
+- Diversity challenges: How difficult it is to maintain diversity in evolutionary algorithms
+- Novel molecule integration: The balance between encouraging innovation and maintaining reliability
+- Synthesis feasibility: The complexity of making computational predictions about real-world synthesis
+
+Project Evolution Insights:
+- The shift from "can we generate many candidates quickly?" to "can we produce actionable fuel formulations?"
+- The value of deterministic reproducibility in experimental workflows
+- The importance of bridging computational design with practical constraints
+
+[YOUR REFLECTION HERE - What would you do differently? What are you most proud of?]
+
+================================================================================
+8. THE BIG WRITE-UP
+================================================================================
+
+[YOUR REFLECTION HERE - October-December 2025: How did you organize your thoughts? How did you handle feedback? How did you polish your work?]
+
+October 2025:
+Project Book Writing
+
+- Structure development: Organizing content into logical sections
+  * Abstract and Introduction
+  * Literature Review
+  * Methodology
+  * Results and Preliminary Outputs
+  * Discussion and Conclusion
+- Technical writing: Translating code and algorithms into clear explanations
+- Balancing detail with accessibility: Making complex concepts understandable
+- Integration of computational results with scientific context
+
+November 2025:
+Video Creation
+
+- Script development: Telling the project story in video format
+- Visual elements: Demonstrating the system in action
+- Balancing technical accuracy with engaging presentation
+- Editing and refinement: Ensuring clear communication
+
+December 2025:
+Poster Development
+
+- Design process: Creating visual representation of the project
+- Information hierarchy: Prioritizing key messages
+- Integration of visual and textual elements
+- Iterative refinement based on feedback
+
+Presentation Organization:
+- Clear narrative arc: From problem to solution to impact
+- Visual aids: Diagrams, graphs, molecular visualizations
+- Demonstration preparation: Showing the system in action
+- Q&A preparation: Anticipating questions and preparing answers
+
+[YOUR REFLECTION HERE - What was the hardest part of presenting your work? How did feedback help you improve?]
+
+================================================================================
+9. WRAPPING UP
+================================================================================
+
+[YOUR REFLECTION HERE - December 2025: Why do your findings matter? What difference could your project make? Where could you take it next?]
+
+Significance of Findings:
+
+Ignition Protocol demonstrates that computational fuel design can bridge the gap between molecular discovery and practical formulation. The unified pipeline approach - combining molecular generation with blend optimization - produces actionable results that respect real-world constraints.
+
+Key contributions:
+1. End-to-end fuel design system: From fragments to lab-ready recipes
+2. Operational realism: Respecting fuel-type specifications and regulatory constraints
+3. Novel molecule integration: Enabling exploration of new chemical space while maintaining practicality
+4. Reproducibility: Deterministic outputs enable experimental validation
+
+Potential Impact:
+
+- Accelerated fuel discovery: Computational screening before expensive experimental testing
+- Novel fuel formulation: Exploring chemical space beyond traditional components
+- Educational value: Demonstrating computational chemistry and optimization techniques
+- Research foundation: Framework for future fuel design research
+
+Future Directions:
+
+- Experimental validation: Testing computationally designed blends in laboratory
+- Machine learning integration: Enhanced property prediction using ML models
+- Multi-objective optimization: Pareto frontier exploration for diverse blend portfolios
+- Expanded synthesis capabilities: More reaction types and synthesis routes
+- Real-world testing: Combustion fingerprinting, stability assays, environmental impact assessment
+
+[YOUR REFLECTION HERE - What are your next steps? What excites you most about continuing this work?]
+
+================================================================================
+10. EXTRAS
+================================================================================
+
+Supporting Materials and Documentation:
+
+Code Repository:
+- Main codebase: molecular_generator/ and fuel_engine/ modules
+- CLI interface: engine.py
+- Utility scripts: scripts/preprocess_gdb11.py, scripts/clean_outputs.py
+- Jupyter notebooks: notebooks/unified_workflow.ipynb
+
+Documentation Files:
+- README.md: Project overview and usage guide
+- IMPLEMENTATION_SUMMARY.md: Home synthesis features documentation
+- CHANGES_APPLIED.md: Improvement tracking
+- IMPROVEMENT_ROADMAP.md: Future development plans
+- PROJECT_BOOK_ANALYSIS.md: Project book analysis
+- PLAN_HOME_SYNTHESIS.md: Home synthesis implementation plan
+
+Data Files:
+- Component libraries: data/components.csv, data/components_novel.csv
+- Fragment libraries: data/fragments/ (GDB-11 filtered, high entropy fragments, etc.)
+- Baseline blends: data/baseline_blend.csv
+- Run outputs: runs/<timestamp>_<seed>/ (Top-N blends, RUN.json metadata)
+- Exports: exports/ (top molecules, fitness history, components)
+
+Project Book:
+- exports/ignition_protocol_repo_aligned_rewrite.txt: Full project book text
+- exports/Ignition Protocol SYSTE'26 (4).pdf: Final project book PDF
+- exports/Ignition Protocol - Book Cover.pdf: Book cover design
+
+Visual Materials:
+- Poster: poster_background_a0.svg
+- Book cover: exports/book-cover-done.png, exports/book-cover-done.pdf
+- Website: website/ directory (Next.js project)
+
+Key Results:
+- Molecular evolution outputs: Top evolved molecules with properties
+- Blend optimization results: Optimized blends with lab-ready recipes
+- Fitness progression data: Evolution of fitness over generations
+- Diversity metrics: Unique molecule generation statistics
+
+Timeline Context:
+- June-July 2025: Literature review, initial engine development
+- August 2025: Basic engine, fragment integration
+- September 2025: Blend optimizer, unified pipeline
+- October 2025: Young Scientist entry, engine improvements
+- November 2025: Home synthesis features, video creation
+- December 2025: Poster development, final documentation, website
+
+================================================================================
+END OF PROJECT DIARY
+================================================================================
+

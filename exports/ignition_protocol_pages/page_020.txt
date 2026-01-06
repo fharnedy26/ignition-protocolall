@@ -1,0 +1,41 @@
+ 
+Table: Top eight candidates from the Heavy Stress profile. These represent near-optimal structures according to the engine’s scoring metric. They are highly 
+complex, heavily branched (several tertiary and quaternary carbons), and many include oxygen substitutions (O) indicating the presence of ether or alcohol 
+functional groups that our scoring heuristic apparently favored for ignition properties. These molecules push the boundaries of what we might consider as 
+realistic fuel components, highlighting that the engine, when pushed, will explore edge cases of the chemical space. 
+Brutal Profile 
+Finally, the Brutal profile is our ultimate stress test, designed to push the engine to its scalability limits. This profile uses the maximum settings we deemed 
+feasible and was run primarily to observe how performance scales at the extreme end, and whether any component of the engine breaks down under sheer 
+volume. 
+Parameterization: We threw the kitchen sink at this run: 10 seed molecules (covering a broad diversity), 5 generations of mutations for each (deep 
+exploration), and minimal artificial limits on branching. Essentially, at each generation, every possible fragment attachment or mutation that passes basic 
+chemical validity is allowed to produce a new candidate. We rely on the filters as the only brake to cull the explosion of structures. This means the engine 
+potentially examines a huge swath of chemical space – far more than would be practical for any real design experiment, but ideal for seeing how the 
+system copes. 
+Estimated candidate count: On the order of 10^6. Given the multiplicative growth with 10 seeds and 5 generations, the theoretical number of raw 
+structures could reach into the millions (if each molecule gave ~4-5 children consistently, 10 * 5^5 would be 31,250, but with 5 generations it could be much 
+higher if branching increases at later generations). We anticipated that after filtering, the engine might still end up processing a number of candidates in the 
+high hundreds of thousands, possibly approaching one million. 
+Actual candidates processed: The Brutal run indeed pushed into the seven figures. We recorded over 800,000 candidate molecules that made it through 
+filtering and were scored. This is an enormous number – to put it in perspective, that’s nearly a million evaluations of the surrogate scoring function within 
+one run. The raw generation count was even higher (several million structures considered), but the majority were pruned out by the filters before scoring. At 
+this scale, even the memory footprint became significant: storing hundreds of thousands of molecule objects and their scores in memory was taxing but 
+manageable on our 32 GB system, whereas the 16 GB system was closer to its limits (we had to ensure efficient deletion of discarded candidates to avoid 
+runaway memory usage). 
+Execution time: The Brutal profile is time-consuming, on the order of an hour. On the i7-8700 (System A), the run took about 3,600 seconds 
+(approximately 60 minutes). On the i5-12th Gen system, it completed in roughly 2,700 seconds (around 45 minutes). This ~15-minute difference 
+underscores how the newer hardware can significantly shorten even very long runs (System B was about 33% faster, similar to the Heavy profile 
+improvement). Over the course of this run, the CPU was pegged at full utilization almost continuously, and we observed that certain steps (like large sorting 
+operations and massive loops over candidates) started to dominate the runtime profile. Despite the length of this run, it was successful – the engine did not 
+crash, and it managed to enumerate and score an immense number of candidates, which speaks to the stability of the implementation under stress. 
+The top 8 molecules from the Brutal profile are listed below. By virtue of exploring such a gigantic space, these candidates achieved the highest scores 
+we’ve seen. They may represent the theoretical extreme of our scoring function’s preferences – extremely complex molecules combining many favorable 
+features. However, it’s worth noting that just because the engine found these as top scorers doesn’t mean they’re practical fuel molecules; rather, they 
+reflect the surrogate model’s biases when given free rein. For our purposes, they serve to confirm that the engine was indeed exploring new territory up to 
+the last iteration, and they give a sense of what “optimal” looked like in this toy model’s eyes. 
+Brutal Profile Top 8 Molecules: 
+Rank  Molecule (SMILES)                                           Score 
+1     CC(C)(C(O)C(C)C=C(C)C)C(C)(C)C(OC(C)C(C)C)=C(C)C           0.99  
+2     C=C(C)C(C)(C(O)C(C)C(C)C)C(C)C(COC(C)C(C)C)C(C)C           0.98  
+3     CC1(C)C(C)(C)C(CO)C(C)(C)C(COC(C)C)C(C)C1(C)C             0.98  
+19 

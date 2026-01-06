@@ -1,0 +1,12 @@
+ 
+ 
+1.​
+Abstract 
+Ignition Protocol is a genetically driven framework for discovering and validating synthetic fuels. This fragment-based algorithm, seeded with molecules 
+from the GDB-17 database, generates candidates evaluated through a multi-objective fitness function balancing molecular weight, oxygen-to-carbon ratio, 
+volatility, and combustion potential. This gives a smooth gateway for future laboratory work through tests such as combustion fingerprinting—using flame 
+imaging and spectrometry—and biodegradability assays assessing microbial stability and environmental persistence. By combining cheminformatics, 
+evolutionary optimization, and future combustion diagnostics, and microbiological testing, the project delivers a scalable approach to fuel discovery that 
+links molecular structure directly to performance and sustainability.
+ 
+2 
