@@ -1,9 +1,0 @@
- 
-2.​
-Introduction 
-Synthetic fuels offer a pathway to reducing reliance on fossil energy while meeting global demand. Traditional research has focused on modifying 
-known molecules, limiting exploration of chemical space. Ignition Protocol addresses this by applying evolutionary algorithms to design molecules 
-from the ground up, navigating millions of structural possibilities and selecting candidates with advantageous properties. 
- 
- 
-3 
