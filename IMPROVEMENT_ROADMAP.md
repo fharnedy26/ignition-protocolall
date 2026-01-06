@@ -1,10 +1,10 @@
-# Improvement Roadmap for Fuel Blend Optimization System
+# Improvement Roadmap for Fuel Blend Optimisation System
 
 ## Current Status Analysis
 
 ### ✅ What's Working Well
 1. **Molecular Evolution**: Successfully generating molecules with fitness scores competitive with common fuels (45.45 vs MTBE 46.03)
-2. **Blend Optimization**: Engine runs successfully, generates valid blends
+2. **Blend Optimisation**: Engine runs successfully, generates valid blends
 3. **GDB-11 Integration**: Successfully processing 2.7M+ fragments
 4. **Component Conversion**: Molecules properly converted to component format
 
@@ -12,12 +12,12 @@
 
 #### 1. **Low Diversity in Molecular Evolution**
 - **Problem**: Only 4 unique molecules out of 54 generated (7.4% diversity)
-- **Impact**: Limited candidate pool for blend optimization
+- **Impact**: Limited candidate pool for blend optimisation
 - **Root Cause**: Early convergence, insufficient diversity injection
 
 #### 2. **Novel Molecules Not Being Used**
 - **Problem**: Best blend shows only standard components (isooctane, toluene, MTBE, ethanol)
-- **Impact**: Novel molecules aren't contributing to improvements
+- **Impact**: Novel molecules are not contributing to improvements
 - **Root Causes**:
   - Novel penalty: `NOVEL_PEN_PER_VOL = 0.1` (10% penalty per volume fraction)
   - Only 2 unique novel molecules available
@@ -25,24 +25,24 @@
 
 #### 3. **Limited Novel Molecule Pool**
 - **Problem**: Only 2 unique molecules in final component CSV
-- **Impact**: Optimizer has very few novel options to choose from
+- **Impact**: Optimiser has very few novel options to choose from
 
 ## Improvement Recommendations
 
 ### Priority 1: Increase Molecular Diversity (High Impact, Medium Effort)
 
-**Goal**: Generate 20-50 unique high-quality molecules per run
+**Goal**: Generate 20–50 unique high-quality molecules per run
 
 **Actions**:
 1. **Improve Diversity Mechanisms**:
-   - Increase base diversity rate from 15% to 25-30%
+   - Increase base diversity rate from 15% to 25–30%
    - Add "island model" evolution (multiple independent populations)
    - Implement "niching" to preserve diverse local optima
    - Add explicit diversity metric (Tanimoto distance) to fitness
 
 2. **Better Fragment Selection**:
    - Weight fragment selection by diversity (avoid overusing same fragments)
-   - Use larger fragment cache (200K → 500K)
+   - Utilise larger fragment cache (200K → 500K)
    - Pre-filter fragments by structural diversity
 
 3. **Extended Evolution**:
@@ -51,7 +51,7 @@
    - Run multiple independent evolutions with different seeds
    - Combine results from multiple runs
 
-**Expected Outcome**: 20-50 unique molecules instead of 4
+**Expected Outcome**: 20–50 unique molecules instead of 4
 
 ---
 
@@ -62,18 +62,18 @@
 **Actions**:
 1. **Reduce Novel Penalty**:
    - Current: `NOVEL_PEN_PER_VOL = 0.1` (10% penalty)
-   - Suggested: `0.02-0.05` (2-5% penalty) or make it configurable
-   - Rationale: Novel molecules should be penalized for risk, but not so much they're never used
+   - Suggested: `0.02–0.05` (2–5% penalty) or make it configurable
+   - Rationale: Novel molecules should be penalised for risk, but not so much they are never used
 
 2. **Improve Property Estimation**:
    - Current RON estimation may be conservative
    - Add more sophisticated property prediction (group contribution methods)
    - Calibrate against known molecules
 
-3. **Better Cost Modeling**:
+3. **Better Cost Modelling**:
    - Current: Fixed cost (2.0 EUR/L) for all novel molecules
    - Suggested: Estimate cost from synthesis complexity
-   - Use waste credit more effectively
+   - Utilise waste credit more effectively
 
 **Expected Outcome**: Novel molecules appear in top blends when they offer advantages
 
@@ -81,11 +81,11 @@
 
 ### Priority 3: Expand Novel Molecule Library (Medium Impact, Medium Effort)
 
-**Goal**: Provide optimizer with 10-30 novel molecule options
+**Goal**: Provide optimiser with 10–30 novel molecule options
 
 **Actions**:
 1. **Run Multiple Evolution Runs**:
-   - Run 5-10 independent evolutions with different seeds
+   - Run 5–10 independent evolutions with different seeds
    - Combine unique molecules from all runs
    - Filter by fitness threshold (e.g., >40)
 
@@ -97,7 +97,7 @@
    - Combine diverse candidates
 
 3. **Fragment Library Expansion**:
-   - Use more fragments (500K instead of 200K)
+   - Utilise more fragments (500K instead of 200K)
    - Pre-filter by fuel-relevance more carefully
    - Add known fuel molecule fragments as seeds
 
@@ -105,17 +105,17 @@
 
 ---
 
-### Priority 4: Engine Optimization Improvements (Medium Impact, Low Effort)
+### Priority 4: Engine Optimisation Improvements (Medium Impact, Low Effort)
 
 **Goal**: Better exploration of novel molecule space
 
 **Actions**:
 1. **Novel-First Exploration Mode**:
-   - Add `--novel-first` flag that prioritizes novel molecules in greedy selection
+   - Add `--novel-first` flag that prioritises novel molecules in greedy selection
    - Force at least one novel molecule in initial greedy selection
-   - Use separate optimization pass for novel-heavy blends
+   - Utilise separate optimisation pass for novel-heavy blends
 
-2. **Multi-Objective Optimization**:
+2. **Multi-Objective Optimisation**:
    - Current: Single scalar score
    - Add: Pareto frontier exploration (RON vs. cost vs. PMI)
    - Generate diverse blend portfolio
@@ -144,9 +144,9 @@
    - Preset configurations (fast, balanced, thorough)
    - Parameter sweep utilities
 
-3. **Visualization**:
+3. **Visualisation**:
    - Plot fitness progression
-   - Visualize molecular diversity (Tanimoto distance matrix)
+   - Visualise molecular diversity (Tanimoto distance matrix)
    - Blend property radar charts
 
 4. **Validation Tools**:
@@ -173,7 +173,7 @@
 4. Better property estimation
 
 ### Phase 3: Long-Term (1-2 weeks)
-1. Multi-objective optimization
+1. Multi-objective optimisation
 2. Advanced diversity techniques (niching, island models)
 3. Comprehensive visualization suite
 4. Configuration system
@@ -204,7 +204,7 @@ NOVEL_PEN_PER_VOL = 0.02  # Reduced from 0.1
 **File**: `fuel_engine/optimization.py`
 - Add `novel_first: bool = False` parameter
 - Modify greedy selection to prioritize novel molecules
-- Add separate optimization pass
+- Add separate optimisation pass
 
 ---
 
@@ -221,8 +221,8 @@ NOVEL_PEN_PER_VOL = 0.02  # Reduced from 0.1
 - [ ] Property prediction accuracy improved
 
 ### Long-Term (3 months)
-- [ ] Multi-objective optimization working
-- [ ] Comprehensive visualization suite
+- [ ] Multi-objective optimisation working
+- [ ] Comprehensive visualisation suite
 - [ ] Validated against experimental data
 
 ---

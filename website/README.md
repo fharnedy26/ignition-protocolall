@@ -1,14 +1,14 @@
 # Ignition Protocol Website
 
-Website for the Ignition Protocol project - An Evolutionary Engine for Molecular Combustion.
+Website for the Ignition Protocol project—An Evolutionary Engine for Molecular Combustion.
 
 ## Overview
 
-This is a Next.js 14 website that documents the fuel blend optimization engine and showcases key highlights from the Ignition Protocol project book. The website features:
+This is a Next.js 14 website that documents the fuel blend optimisation engine and showcases key highlights from the Ignition Protocol project book. The website features:
 
 - **Engine Documentation**: Complete API reference, quick start guide, and usage examples
 - **Project Highlights**: Curated excerpts from the project book
-- **Interactive Demo**: Playground for optimizing fuel blends
+- **Interactive Demo**: Playground for optimising fuel blends
 - **Flame & Darkness Theme**: Custom design language matching the "Ignition Protocol" aesthetic
 
 ## Tech Stack
@@ -64,7 +64,7 @@ website/
 
 ## Design System
 
-The website uses a custom "Flame & Darkness" theme:
+The website utilises a custom "Flame & Darkness" theme:
 
 - **Dark Foundation**: Deep black backgrounds (#0a0a0a, #1a1a1a)
 - **Flame Accents**: Orange (#ff6b35), red-orange (#ff4500), yellow (#ffd700), amber (#ffb347)
@@ -78,16 +78,16 @@ The website is ready to be pushed to GitHub. Follow these steps:
 ### Quick Setup
 
 1. **Create a new repository on GitHub:**
-   - Go to https://github.com/new
+   - Navigate to https://github.com/new
    - Repository name: `ignition-protocol-website` (or your preferred name)
-   - Description: "Website for Ignition Protocol - An Evolutionary Engine for Molecular Combustion"
+   - Description: "Website for Ignition Protocol—An Evolutionary Engine for Molecular Combustion"
    - Choose **Public** or **Private**
-   - **DO NOT** initialize with README, .gitignore, or license (we already have these)
+   - **DO NOT** initialise with README, .gitignore, or licence (these already exist)
    - Click "Create repository"
 
 2. **Push your code:**
    ```powershell
-   # Option 1: Use the setup script
+   # Option 1: Utilise the setup script
    .\setup-github.ps1 -GitHubUsername YOUR_USERNAME
    
    # Option 2: Manual commands
@@ -104,7 +104,7 @@ The website is configured for Vercel deployment. Simply connect your GitHub repo
 
 ### Environment Variables
 
-No environment variables are required for basic functionality. The API routes may need Python engine access in production.
+No environment variables are required for basic functionality. The API routes may require Python engine access in production.
 
 ## Running on Linux (Old MacBook)
 
@@ -112,58 +112,58 @@ No environment variables are required for basic functionality. The API routes ma
 
 For running this website on an old MacBook with Linux:
 
-**Pop!_OS** (Current choice - Recommended if working well):
+**Pop!_OS** (Current choice—Recommended if working well):
 - Excellent performance on older hardware
-- Great developer tools support
-- Easy to set up and maintain
+- Excellent developer tools support
+- Straightforward to set up and maintain
 - Good driver support for Mac hardware
 - Based on Ubuntu, so excellent package availability
 
 **Alternative Options:**
 
-1. **Xubuntu** (If you need better performance):
+1. **Xubuntu** (If better performance is required):
    - XFCE desktop is more lightweight than PopOS
-   - Better for very old hardware (2012-2015 MacBooks)
+   - Better for very old hardware (2012–2015 MacBooks)
    - Still user-friendly and well-supported
    - Lower memory footprint
 
 2. **Lubuntu** (Lightest option):
-   - LXQt desktop - very lightweight
+   - LXQt desktop—very lightweight
    - Best performance on old hardware
    - Minimal resource usage
-   - Good for 2010-2013 MacBooks
+   - Good for 2010–2013 MacBooks
 
-3. **Fedora Workstation** (If you want cutting-edge):
+3. **Fedora Workstation** (If cutting-edge features are desired):
    - Latest packages and features
    - Excellent for development
    - More resource-intensive than PopOS
    - Good for 2015+ MacBooks
 
 **Recommendation**: 
-- **If Pop!_OS is working well, stick with it** - It's an excellent choice for development and has good hardware support
-- If you experience performance issues, try **Xubuntu** (lighter desktop environment)
-- For very old MacBooks (2010-2012), consider **Lubuntu** (lightest option)
-- For newer MacBooks (2015+) wanting cutting-edge packages, **Fedora Workstation** is a solid alternative
+- **If Pop!_OS is working well, maintain it**—It is an excellent choice for development and has good hardware support
+- If performance issues are experienced, try **Xubuntu** (lighter desktop environment)
+- For very old MacBooks (2010–2012), consider **Lubuntu** (lightest option)
+- For newer MacBooks (2015+) requiring cutting-edge packages, **Fedora Workstation** is a solid alternative
 
 **Why Pop!_OS is a good choice:**
 - Based on Ubuntu LTS (long-term support, stable)
 - Excellent NVIDIA GPU support (if your MacBook has one)
-- Great for development work (Node.js, Python, etc.)
+- Excellent for development work (Node.js, Python, etc.)
 - Active community and good documentation
-- System76's optimizations for performance
+- System76's optimisations for performance
 
 ### Performance Tips for Old Hardware
 
-1. **Use a lightweight desktop environment** (XFCE or LXQt)
+1. **Utilise a lightweight desktop environment** (XFCE or LXQt)
 2. **Disable unnecessary services** to free up RAM
-3. **Use SSD** if possible (dramatically improves performance)
-4. **Increase swap space** if you have limited RAM
+3. **Utilise SSD** if possible (dramatically improves performance)
+4. **Increase swap space** if limited RAM is available
 5. **Close unnecessary applications** when running the dev server
 
 ## API Routes
 
-- `/api/optimize` - Fuel blend optimization endpoint
-  - **Note**: Currently in demo mode - returns simulated results
+- `/api/optimize` - Fuel blend optimisation endpoint
+  - **Note**: Currently in demo mode—returns simulated results
   - For production, implement full Python engine integration
   - See `app/api/optimize/route.ts` for implementation details
 - `/api/health` - Health check endpoint

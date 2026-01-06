@@ -125,7 +125,7 @@ def remove_outside_cover(image: Image.Image, border_padding: int = 20, target_si
         
         return Image.fromarray(result_data)
     else:
-        # Original behavior: mask based on detected boundaries with padding
+        # Original behaviour: mask based on detected boundaries with padding
         left, top, right, bottom = detect_cover_boundaries(image, border_padding)
         
         # Create mask (1 = keep, 0 = remove)

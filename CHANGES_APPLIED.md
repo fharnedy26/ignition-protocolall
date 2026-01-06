@@ -12,13 +12,13 @@
 **File**: `molecular_generator/generator.py`
 - **Changed**: `base_diversity_rate` from `0.15` to `0.25`
 - **Impact**: 67% more diversity injection (25% instead of 15%)
-- **Expected Result**: More unique molecules per evolution run (target: 15-25% diversity instead of 7%)
+- **Expected Result**: More unique molecules per evolution run (target: 15–25% diversity instead of 7%)
 
 ### 3. ✅ Increased Fragment Cache Size
 **File**: `run_maximum_gdb11.py`
 - **Changed**: `max_fragments` from `200000` to `500000`
 - **Impact**: 2.5x larger fragment pool
-- **Expected Result**: More diverse molecules can be generated
+- **Expected Result**: More diverse molecules may be generated
 
 ### 4. ✅ Enhanced Multiple Evolutions Script
 **File**: `run_multiple_evolutions.py`
@@ -29,7 +29,7 @@
   - `survivors` from `10` to `15` (50% more)
   - `max_fragments` from `200000` to `300000` (50% more)
 - **Impact**: More thorough exploration, more unique molecules
-- **Expected Result**: 20-30 unique molecules instead of 4-10
+- **Expected Result**: 20–30 unique molecules instead of 4–10
 
 ## Testing the Changes
 
@@ -37,9 +37,9 @@
 ```bash
 python run_multiple_evolutions.py
 ```
-**Expected**: 20-30 unique molecules in the output
+**Expected**: 20–30 unique molecules in the output
 
-### Test 2: Use Novel Components in Blend
+### Test 2: Utilise Novel Components in Blend
 ```bash
 python engine.py --components components.csv \
   --novel exports/gdb11_multiple_runs_components.csv \
@@ -48,11 +48,11 @@ python engine.py --components components.csv \
 ```
 **Expected**: Novel molecules should appear in top blends
 
-### Test 3: Check Diversity
+### Test 3: Verify Diversity
 ```bash
 python run_maximum_gdb11.py
 ```
-**Expected**: Diversity ratio should be 15-25% instead of 7%
+**Expected**: Diversity ratio should be 15–25% instead of 7%
 
 ## Before vs After Comparison
 
@@ -68,15 +68,15 @@ python run_maximum_gdb11.py
 ## Next Steps
 
 1. **Run the tests above** to verify improvements
-2. **Check blend results** to see if novel molecules are used
-3. **If still not enough**, see `IMPROVEMENT_ROADMAP.md` for Phase 2 improvements
-4. **If good enough**, focus on QOL improvements (visualization, reporting)
+2. **Examine blend results** to determine if novel molecules are utilised
+3. **If still insufficient**, see `IMPROVEMENT_ROADMAP.md` for Phase 2 improvements
+4. **If sufficient**, focus on quality-of-life improvements (visualisation, reporting)
 
 ## Notes
 
 - All changes are backward compatible
 - No breaking changes to APIs
-- Changes are tunable (can adjust values if needed)
+- Changes are tunable (values may be adjusted if required)
 - Original functionality preserved
 
 

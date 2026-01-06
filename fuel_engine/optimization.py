@@ -1,5 +1,5 @@
 """
-Core optimization algorithms for fuel blend optimization.
+Core optimisation algorithms for fuel blend optimisation.
 """
 
 import time
@@ -245,7 +245,7 @@ def greedy_then_refine(comps: pd.DataFrame, baseline: Optional[Dict[str, float]]
         s_v -= PENALTY_WEIGHT * pen_v
         return float(s_v)
     
-    # Nested function to run optimization from a given start
+    # Nested function to run optimisation from a given start
     def run_from_start(x_start: np.ndarray) -> Dict:
         # project start
         xv = project_simplex_with_caps(x_start.copy(), caps_arr,

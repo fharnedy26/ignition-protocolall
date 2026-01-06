@@ -1,8 +1,8 @@
-# Implementation Summary: Home-Synthesizable Fuel Molecule Generation
+# Implementation Summary: Home-Synthesisable Fuel Molecule Generation
 
 ## ✅ Completed Implementation
 
-All planned changes have been successfully implemented. The SYSTE-26 engine now supports generating fuel molecules optimized for home synthesis feasibility.
+All planned changes have been successfully implemented. The SYSTE-26 engine now supports generating fuel molecules optimised for home synthesis feasibility.
 
 ---
 
@@ -18,18 +18,18 @@ All planned changes have been successfully implemented. The SYSTE-26 engine now 
   - Alkyl chains
   - Common esters
 - **Key Functions**:
-  - `HOME_SYNTHESIS_FRAGMENTS`: List of all home-synthesizable fragments
-  - `is_home_synthesizable(smiles)`: Check if molecule can be made at home
-  - `get_fragments_by_category(category)`: Get fragments by type
+  - `HOME_SYNTHESIS_FRAGMENTS`: List of all home-synthesisable fragments
+  - `is_home_synthesizable(smiles)`: Verify if molecule can be synthesised at home
+  - `get_fragments_by_category(category)`: Obtain fragments by type
 
 ### 2. `molecular_generator/synthesis.py`
 - **Purpose**: Synthesis route prediction and instructions
 - **Key Functions**:
   - `suggest_synthesis_route(smiles)`: Main function to suggest synthesis
   - `format_synthesis_instructions(route)`: Format as human-readable text
-  - `identify_reaction_type(mol)`: Detect reaction type needed
-  - `get_reaction_conditions(reaction_type)`: Get reaction conditions
-  - `estimate_difficulty(reaction_type, complexity)`: Rate difficulty
+  - `identify_reaction_type(mol)`: Detect reaction type required
+  - `get_reaction_conditions(reaction_type)`: Obtain reaction conditions
+  - `estimate_difficulty(reaction_type, complexity)`: Assess difficulty
   - `estimate_yield(reaction_type, complexity)`: Estimate yield
 
 **Supported Reaction Types**:
@@ -50,7 +50,7 @@ All planned changes have been successfully implemented. The SYSTE-26 engine now 
 
 ### 1. `molecular_generator/fitness.py`
 **New Functions Added**:
-- `estimate_synthesis_feasibility(smiles)`: Score 0-100 for home synthesis ease
+- `estimate_synthesis_feasibility(smiles)`: Score 0–100 for home synthesis ease
 - `count_functional_groups(mol)`: Count functional groups
 - `has_ester_group(mol)`: Detect ester functionality
 - `has_ether_group(mol)`: Detect ether functionality
@@ -73,12 +73,12 @@ All planned changes have been successfully implemented. The SYSTE-26 engine now 
 ### 3. `molecular_generator/molecule_to_component.py`
 **Enhanced**:
 - Now includes synthesis metadata in component dictionaries:
-  - `synthesis_feasibility`: Feasibility score (0-100)
-  - `synthesis_complexity`: Complexity rating (1-10)
-  - `synthesis_reaction_type`: Type of reaction needed
+  - `synthesis_feasibility`: Feasibility score (0–100)
+  - `synthesis_complexity`: Complexity rating (1–10)
+  - `synthesis_reaction_type`: Type of reaction required
   - `synthesis_difficulty`: easy/moderate/hard
   - `synthesis_yield_estimate`: Expected yield range
-  - `oxidation_susceptibility`: Oxidation risk score (0-10)
+  - `oxidation_susceptibility`: Oxidation risk score (0–10)
   - `stability_notes`: Stability-related notes
 
 ### 4. `molecular_generator/__init__.py`
@@ -134,7 +134,7 @@ print(format_synthesis_instructions(route))
 **Synthesis Route: Esterification**
 
 **Difficulty:** EASY
-**Expected Yield:** 70-90%
+**Expected Yield:** 70–90%
 **Feasibility Score:** 85.0/100
 
 **Starting Materials:**
@@ -143,10 +143,10 @@ print(format_synthesis_instructions(route))
 
 **Reaction Conditions:**
   - Catalyst: H2SO4 (concentrated)
-  - Temperature: 60-80°C
-  - Time: 1-2 hours
+  - Temperature: 60–80°C
+  - Time: 1–2 hours
   - Equipment: Round-bottom flask, condenser, heating mantle
-  - Notes: Use excess alcohol or acid to drive equilibrium
+  - Notes: Utilise excess alcohol or acid to drive equilibrium
 
 **Note:** Relatively straightforward synthesis with proper precautions
 ```
@@ -229,7 +229,7 @@ print(low_risk[['name', 'oxidation_susceptibility', 'synthesis_difficulty']])
 1. **Generate Testable Molecules**: Create molecules you can actually synthesize at home
 2. **Get Synthesis Instructions**: Automatically receive synthesis routes and conditions
 3. **Plan Stability Tests**: Identify molecules for oxidation, phase separation, and pH testing
-4. **Optimize for Both**: Balance fuel performance with synthesis feasibility
+4. **Optimise for Both**: Balance fuel performance with synthesis feasibility
 
 ---
 
@@ -301,7 +301,7 @@ print(f"Generated {len(df)} molecules")
 ## ✨ Summary
 
 The engine now generates molecules that are:
-- ✅ Optimized for fuel performance
+- ✅ Optimised for fuel performance
 - ✅ Feasible to synthesize at home
 - ✅ Accompanied by synthesis instructions
 - ✅ Suitable for stability testing

@@ -9,19 +9,19 @@ by Finn Harnedy
 
 [YOUR REFLECTION HERE - June 2025: Why did you start this project? What motivated you?]
 
-Ignition Protocol is a computational framework for discovering, filtering, and operationalizing synthetic fuel candidates. The project emerged from a recognition that synthetic fuels and fuel blends offer a path to reducing reliance on fossil energy while meeting global demand and tightening emissions constraints.
+Ignition Protocol is a computational framework for discovering, filtering, and operationalising synthetic fuel candidates. The project emerged from a recognition that synthetic fuels and fuel blends offer a path to reducing reliance on fossil energy whilst meeting global demand and tightening emissions constraints.
 
 The project combines two complementary systems:
-1. A molecular generation module that evolves candidate molecules from fragment libraries using genetic algorithms
-2. A deterministic blend optimization engine that selects and proportions components into lab-ready fuel blends
+1. A molecular generation module that evolves candidate molecules from fragment libraries utilising genetic algorithms
+2. A deterministic blend optimisation engine that selects and proportions components into laboratory-ready fuel blends
 
-The goal is not just to rank "interesting molecules" but to produce candidate blends that can be mixed, tested, and iterated upon with clear reproducibility.
+The goal is not merely to rank "interesting molecules" but to produce candidate blends that may be mixed, tested, and iterated upon with clear reproducibility.
 
 Key technologies:
 - RDKit for molecular validation and manipulation
-- GDB-11 database (molecules with up to 11 atoms, optimized for fuel applications)
+- GDB-11 database (molecules with up to 11 atoms, optimised for fuel applications)
 - Genetic algorithms for molecular evolution
-- Deterministic optimization for blend formulation
+- Deterministic optimisation for blend formulation
 - Python-based computational framework
 
 The project aims to bridge computational fuel design with practical experimental validation, creating a scalable approach to fuel discovery that respects real-world constraints and produces actionable results.
@@ -48,9 +48,9 @@ The project began with extensive literature review focusing on three key areas:
 
 3. AI and Evolutionary Search for Molecular Design
    - Exploration of evolutionary computation in molecular design
-   - Genetic algorithms, mutation/crossover operators, multi-objective optimization
-   - Modern approaches using surrogate models and ML predictors
-   - Decision to use lightweight structural heuristics and fast property proxies initially, with pathway to ML integration
+   - Genetic algorithms, mutation/crossover operators, multi-objective optimisation
+   - Modern approaches utilising surrogate models and ML predictors
+   - Decision to utilise lightweight structural heuristics and rapid property proxies initially, with pathway to ML integration
 
 July 2025:
 Initial project concepts explored:
@@ -61,9 +61,9 @@ Initial project concepts explored:
 
 The evolution from basic engine to unified pipeline:
 - Initial concept: Simple molecular generation tool
-- Realization: Need for operational realism - molecules must work in actual blends
-- Future vision: Combine molecular generation with blend optimization (implementation planned for later)
-- Key insight: System should eventually produce lab-ready recipes, not just interesting molecules
+- Realisation: Need for operational realism—molecules must function in actual blends
+- Future vision: Combine molecular generation with blend optimisation (implementation planned for later)
+- Key insight: System should eventually produce laboratory-ready recipes, not merely interesting molecules
 
 [YOUR REFLECTION HERE - How did conversations with mentors or friends influence your thinking?]
 
@@ -78,7 +78,7 @@ The project plan evolved from a simple molecular generator to a unified fuel des
 
 1. Molecular Generator Focus:
    - Fragment-based evolution using genetic algorithms
-   - Fragment-based evolution from GDB-11 database (up to 11 atoms, fuel-optimized)
+   - Fragment-based evolution from GDB-11 database (up to 11 atoms, fuel-optimised)
    - Multi-objective fitness function balancing:
      * Molecular weight
      * Oxygen-to-carbon ratio
@@ -90,7 +90,7 @@ The project plan evolved from a simple molecular generator to a unified fuel des
 
 2. Future Vision:
    - Recognition that molecules need to work in actual blends
-   - Concept of combining molecular generation with blend optimization (to be implemented later)
+   - Concept of combining molecular generation with blend optimisation (to be implemented later)
    - Idea for conversion module to transform molecules into blend-compatible components
 
 August 2025:
@@ -102,10 +102,10 @@ Refinements based on early development:
 - Focus on getting the molecular generator working well first
 
 Key design principles established:
-- Operational Realism: Future system should optimize realistic blends under real-world constraints
+- Operational Realism: Future system should optimise realistic blends under real-world constraints
 - Practical Integration: Novel molecules should be convertible to blend-compatible records
 - Reproducibility: Future outputs should be deterministic with complete parameter capture
-- End-to-End Pipeline Vision: From fragments to final blend recipes (to be fully realized when blend optimizer is added)
+- End-to-End Pipeline Vision: From fragments to final blend recipes (to be fully realised when blend optimiser is added)
 
 [YOUR REFLECTION HERE - What feedback did you receive? How did it change your approach?]
 
@@ -123,7 +123,7 @@ Basic Engine Development and Fragment Integration
 - Memory-efficient streaming implementation for processing large archives
 - Fuel-relevance filtering: Automatic extraction of C/H/O-only molecules
 - Fragment merging system: Custom fragment-based approach (not BRICS)
-- Fitness function development: Multi-objective optimization implementation
+- Fitness function development: Multi-objective optimisation implementation
   * Energy considerations
   * Oxygen balance
   * Volatility metrics
@@ -132,10 +132,10 @@ Basic Engine Development and Fragment Integration
 - Early testing: Basic engine functional, generating valid molecules
 
 September 2025:
-Blend Optimizer Development and Unified Pipeline
+Blend Optimiser Development and Unified Pipeline
 
-- Began development of blend optimizer (fuel_engine module) - this was when the blend optimization component was first implemented
-- Created deterministic blend optimization engine
+- Began development of blend optimiser (fuel_engine module)—this was when the blend optimisation component was first implemented
+- Created deterministic blend optimisation engine
 - Greedy-then-refine algorithm implementation
 - Fuel-type specific constraint enforcement:
   * Gasoline: RON/MON requirements, volatility limits (T10/T90, RVP)
@@ -144,10 +144,10 @@ Blend Optimizer Development and Unified Pipeline
 - Component library CSV system for established fuels
 - Novel component support with volume fraction caps
 - Lab-ready recipe generation: Volume fractions, mL and grams per 1000 mL
-- Unified pipeline: Connecting molecular generator to blend optimizer
+- Unified pipeline: Connecting molecular generator to blend optimiser
   * molecule_to_component.py: Bridge module for conversion
   * Property estimation: RON/MON/cetane/LHV/PMI/TSI/density/T10/T50/T90/RVP
-- Initial optimization tests and refinement
+- Initial optimisation tests and refinement
 
 October 2025:
 Engine Improvements and Young Scientist Entry Preparation
@@ -157,7 +157,7 @@ Engine Improvements and Young Scientist Entry Preparation
   * Solution: Increased base diversity rate from 15% to 25%
   * Fragment cache expansion: 200K → 500K fragments
 - Novel molecule integration challenges
-  * Problem: Novel molecules not appearing in optimized blends
+  * Problem: Novel molecules not appearing in optimised blends
   * Solution: Reduced novel penalty from 10% to 2% per volume fraction
   * Multiple evolution runs: 5 → 10 independent runs
 - Enhanced multiple evolutions script:
@@ -187,13 +187,13 @@ Home Synthesis Features and Video Creation
   * Synthesis metadata in component records (feasibility, complexity, reaction type, difficulty, yield estimate)
   * Stability notes and oxidation susceptibility scores
 - Video creation (End of November): Scripting, filming, and editing project video
-- Final engine refinements: Performance optimizations, bug fixes
+- Final engine refinements: Performance optimisations, bug fixes
 
 December 2025:
 Final Refinements and Poster Development
 
 - Poster development: Design concepts, layout planning, content creation
-- Final code refinements and optimization
+- Final code refinements and optimisation
 - Website development: Next.js website for project documentation
 - Final documentation: Completing project book
 - Preparation for SYSTE'26 exhibition
@@ -221,18 +221,18 @@ Early results:
 - Fragment diversity analysis: Tracking unique molecules per generation
 
 October 2025:
-Blend Optimization Results and Analysis
+Blend Optimisation Results and Analysis
 
-- Blend optimization testing across fuel types:
-  * Gasoline: RON/MON optimization, volatility constraint satisfaction
-  * Diesel: Cetane optimization, density bounds
-  * Jet fuel: Property range optimization
+- Blend optimisation testing across fuel types:
+  * Petrol: RON/MON optimisation, volatility constraint satisfaction
+  * Diesel: Cetane optimisation, density bounds
+  * Jet fuel: Property range optimisation
 - Multi-objective scoring analysis:
   * RON, cetane, LHV, PMI, cost trade-offs
   * Component selection patterns
   * Novel molecule integration rates
 - Performance metrics:
-  * Optimization speed: 0.1-0.3s for typical component libraries
+  * Optimisation speed: 0.1–0.3s for typical component libraries
   * Deterministic reproducibility: Same seed → identical results
 - Diversity analysis:
   * Initial problem: Only 7.4% diversity (4 unique out of 54)

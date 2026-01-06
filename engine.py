@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Minimal Fuel Blend Optimization Engine
-Deterministic, fast, lab-ready blend optimization from fixed component library
+Minimal Fuel Blend Optimisation Engine
+Deterministic, rapid, laboratory-ready blend optimisation from fixed component library
 """
 
 import argparse
@@ -63,11 +63,11 @@ def selftest():
         'is_novel': [0, 0, 0, 0, 0]
     })
     
-    # Test 1: Basic optimization
+    # Test 1: Basic optimisation
     results = greedy_then_refine(toy_comps, K=3, fuel_type='gasoline')
     assert len(results) > 0, "No results generated"
     assert results[0]['score'] > 0, "Negative score"
-    print("[OK] Basic optimization test passed")
+    print("[OK] Basic optimisation test passed")
     
     # Test 2: Determinism
     results1 = greedy_then_refine(toy_comps, K=3, fuel_type='gasoline')
@@ -137,7 +137,7 @@ def selftest():
 
 def main():
     """Main CLI entry point."""
-    parser = argparse.ArgumentParser(description="Minimal Fuel Blend Optimization Engine")
+    parser = argparse.ArgumentParser(description="Minimal Fuel Blend Optimisation Engine")
     
     # Required (unless selftest)
     parser.add_argument('--components', help='Components CSV file')
@@ -434,7 +434,7 @@ def main():
     
     # Helper function for parallel execution
     def run_optimization(theme_name: str, r_id: int, seed_offset: int) -> List[Dict]:
-        """Run a single optimization with given parameters."""
+        """Run a single optimisation with given parameters."""
         np.random.seed(seed_offset)
         return greedy_then_refine(
             comps, baseline=baseline, K=args.K, fuel_type=args.fuel_type,
@@ -593,7 +593,7 @@ def main():
         print(f"[SPEC] OK flags: {ok_flags}  |  (see CSV for details)")
         
         if results[0].get('note') == 'CAP_DEFICIT':
-            print("[WARN] Sum of caps < 1.0 detected; optimizer returned the best feasible blend under caps.")
+            print("[WARN] Sum of caps < 1.0 detected; optimiser returned the best feasible blend under caps.")
 
         # Optional cleanup of old runs
         if args.clean_runs and isinstance(args.clean_runs, int):

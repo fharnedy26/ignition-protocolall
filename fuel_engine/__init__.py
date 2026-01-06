@@ -1,7 +1,7 @@
 """
-Fuel Engine - Deterministic fuel blend optimization engine.
+Fuel Engine - Deterministic fuel blend optimisation engine.
 
-A modular, clean, and efficient implementation for fuel blend optimization
+A modular, clean, and efficient implementation for fuel blend optimisation
 from fixed component libraries.
 """
 
